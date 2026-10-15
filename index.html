@@ -2,138 +2,805 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Isabella Handem</title>
-<meta name="description" content="Handem Club, curso de automaquiagem e tudo da Isabella Handem na Ilha do Governador.">
-<meta property="og:title" content="Isabella Handem">
-<meta property="og:description" content="Handem Club: encontros de mulheres na Ilha do Governador. Curso de automaquiagem online.">
-<meta name="theme-color" content="#F3EBE0">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#963A59">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Central Handem</title>
+<meta name="apple-mobile-web-app-title" content="Central Handem">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap">
-<script>
-/* ================================================================
-   PREENCHA AQUI. É só trocar o que está entre aspas.
-   ================================================================ */
-const CONFIG = {
-  whatsapp: "5521986153800",           // seu WhatsApp (Club)
-  espaco:   "5521981584274",           // vestidos e escola de costura
-  parceria: "5521992604945",           // parcerias e publicidade
-  kiwify:   "https://pay.kiwify.com.br/37lCGH2",          // Método Automake 21 dias
-  clubSite: "https://isabelladutras.github.io/handemclub/", // site do Club
-  endereco: "Espaço Handem · Tauá, Ilha do Governador",
-  mapa:     "",                       // link do Google Maps do Espaço (vazio = esconde)
-};
-/* Próximos encontros do Club. Apague os que já passaram e acrescente os novos. */
-const ENCONTROS = [
-  { tema: "Novembro · tema em breve", datas: "qua 25/11 e sáb 28/11" },
-  { tema: "Dezembro · tema em breve", datas: "qua 16/12 e sáb 19/12" },
-];
-</script>
 <style>
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+[hidden]{display:none!important}
+img{max-width:100%}
+:root{padding-top:env(safe-area-inset-top,0px)}
+/* Layout: app de uma coluna para celular — cabeçalho curto, conteúdo em lista, barra de abas fixa embaixo. */
 :root{
-  --bg:#F3EBE0; --surface:#FBF7F1; --ink:#2E1A1F; --muted:#7A6A62; --line:#E2D5C3;
-  --wine:#6E1F2E; --wine-ink:#F8F1E7; --gold:#B08D57; --gold-soft:#E9DCC4;
-  --display:"Lora",Georgia,serif; --body:"Manrope",system-ui,-apple-system,sans-serif;
+  --bg:#FAF6F5; --surface:#FFFFFF; --sunk:#F2EAEA; --ink:#2B1E24; --muted:#7B6A70; --line:#E8DCDD;
+  --berry:#963A59; --berry-soft:#F6E3E9; --nude:#B8906C; --nude-soft:#F4EBE2;
+  --ok:#3F7A5C; --ok-soft:#E3F0E8; --warn:#9A6A1E; --warn-soft:#F7EDD9;
+  --display:"Lora",Georgia,"Times New Roman",serif;
+  --body:"Manrope",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r:14px;
 }
-@media (prefers-color-scheme: dark){
-  :root{ --bg:#1A1412; --surface:#241C19; --ink:#F3EADF; --muted:#B9A99C; --line:#3A2E28;
-    --wine:#7E2737; --wine-ink:#F8F1E7; --gold:#CDAA70; --gold-soft:#3A3022; }
-}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#151014; --surface:#1F181D; --sunk:#271E24; --ink:#F3EAED; --muted:#B3A2A8; --line:#3A2D35;
+  --berry:#E48AA7; --berry-soft:#3A2230; --nude:#D6B08C; --nude-soft:#2F261F;
+  --ok:#7FC39E; --ok-soft:#1E3027; --warn:#E3B567; --warn-soft:#33291A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#151014; --surface:#1F181D; --sunk:#271E24; --ink:#F3EAED; --muted:#B3A2A8; --line:#3A2D35;
+  --berry:#E48AA7; --berry-soft:#3A2230; --nude:#D6B08C; --nude-soft:#2F261F;
+  --ok:#7FC39E; --ok-soft:#1E3027; --warn:#E3B567; --warn-soft:#33291A; color-scheme:dark}
 *{box-sizing:border-box}
-html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
-main{max-width:440px;margin:0 auto;padding:26px 16px 40px}
-a{color:inherit}
-header{text-align:center;margin-bottom:18px}
-.photo{width:80px;height:80px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 10px;border:2px solid var(--gold)}
-.mono{width:80px;height:80px;border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;background:var(--gold-soft);color:var(--wine);font-family:var(--display);font-size:1.7rem;font-weight:600;border:2px solid var(--gold)}
-h1{font-family:var(--display);font-weight:600;font-size:1.45rem;line-height:1.15;margin:0 0 4px}
-.tag{color:var(--muted);margin:0;font-size:.9rem}
-.club{background:var(--wine);color:var(--wine-ink);border-radius:18px;padding:18px 18px 14px;margin-bottom:10px}
-.eyebrow{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold);margin:0 0 6px}
-.club h2{font-family:var(--display);font-weight:600;font-size:1.25rem;line-height:1.25;margin:0 0 4px;text-wrap:balance}
-.club p{margin:0 0 14px;opacity:.85;font-size:.9rem}
-.btn{display:block;text-align:center;text-decoration:none;font-weight:700;padding:13px 16px;border-radius:999px;background:var(--gold);color:#2E1A1F}
-.btn:active{transform:scale(.99)}
-details{margin-top:10px}
-summary{cursor:pointer;text-align:center;font-size:.82rem;font-weight:600;color:var(--gold);list-style:none;padding:4px}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:18px 110px}
+header.top{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding-bottom:6px}
+.brand{font-family:var(--display);font-weight:600;font-size:1.9rem;line-height:1;letter-spacing:.01em;margin:0}
+.brand small{display:block;font-family:var(--body);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.sync{font-size:.72rem;color:var(--muted);text-align:right}
+.rule{margin:10px 0 18px;padding:10px 12px;border-left:3px solid var(--nude);background:var(--nude-soft);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--ink)}
+h2{font-family:var(--display);font-weight:600;font-size:1.45rem;margin:26px 0 10px;text-wrap:balance}
+h3{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px;font-weight:600}
+.stack{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;min-width:0}
+.feature{background:var(--berry-soft);border-color:transparent}
+.feature .when{color:var(--berry)}
+.when{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums}
+.title{font-weight:600;font-size:1rem;margin:3px 0 8px;line-height:1.35}
+.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{font-size:.7rem;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--sunk);color:var(--muted);white-space:nowrap}
+.chip.A{background:var(--warn-soft);color:var(--warn)}
+.chip.P{background:var(--sunk);color:var(--ink)}
+.chip.T{background:var(--berry-soft);color:var(--berry)}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between}
+select{font:inherit;font-size:.78rem;font-weight:600;border:1px solid var(--line);border-radius:999px;padding:5px 10px;background:var(--surface);color:var(--ink);max-width:100%}
+select.s4{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+select.s3{background:var(--berry-soft);color:var(--berry);border-color:transparent}
+details{border-top:1px solid var(--line);margin-top:10px;padding-top:8px}
+summary{cursor:pointer;font-size:.8rem;font-weight:600;color:var(--berry);list-style:none}
 summary::-webkit-details-marker{display:none}
-summary::after{content:" ▾"}
-details[open] summary::after{content:" ▴"}
-.more{font-size:.86rem;padding-top:8px}
-.more p{margin:0 0 10px;opacity:.9}
-.dates,.prices{list-style:none;padding:0;margin:0 0 10px}
-.dates li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-top:1px solid rgba(248,241,231,.18)}
-.dates span{opacity:.75;white-space:nowrap}
-.prices li{padding:2px 0}
-.prices strong{color:var(--gold)}
-.sitelink{display:block;text-align:center;color:var(--gold);font-weight:700;text-decoration:none;padding:6px 0 2px}
-.links{display:grid;gap:8px}
-.link{display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
-.link b{font-weight:600;display:block}
-.link span{color:var(--muted);font-size:.8rem}
-.link i{font-style:normal;color:var(--gold);font-size:1.15rem;flex:none}
-.link.curso{border-color:var(--gold)}
-.link .price{color:var(--wine);font-family:var(--display);font-weight:600;font-size:1.05rem;flex:none}
-footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:22px}
-footer a{color:var(--wine);font-weight:600}
-a:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+summary:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--berry);outline-offset:2px}
+dl{margin:8px 0 0;display:grid;gap:8px}
+dt{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+dd{margin:2px 0 0}
+.hook{font-family:var(--body);font-weight:600;font-size:1.05rem;line-height:1.4}
+.filters{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin:4px -16px 6px;padding-inline:16px;scrollbar-width:none}
+.filters button{flex:none;font:inherit;font-size:.8rem;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 13px;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.week{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:20px 0 8px;display:flex;justify-content:space-between}
+.progress{height:6px;background:var(--sunk);border-radius:99px;overflow:hidden;margin-top:8px}
+.progress span{display:block;height:100%;background:var(--berry)}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.num{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:left}
+.num b{display:block;font-family:var(--display);font-size:1.6rem;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.num span{font-size:.7rem;color:var(--muted);font-weight:600}
+ul.plain{margin:6px 0 0;padding-left:18px}
+ul.plain li{margin:3px 0}
+.check{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line)}
+.check:last-child{border-bottom:0}
+.check input{width:20px;height:20px;accent-color:var(--berry);flex:none;margin-top:1px}
+.check label{min-width:0}
+.check .sub{display:block;font-size:.75rem;color:var(--muted)}
+.done label{color:var(--muted);text-decoration:line-through}
+.idea-form{display:flex;flex-direction:column;gap:8px}
+textarea{font:inherit;border:1px solid var(--line);border-radius:12px;padding:10px;background:var(--surface);color:var(--ink);min-height:80px;resize:vertical;width:100%}
+.btn{font:inherit;font-weight:700;font-size:.85rem;border:0;border-radius:999px;padding:10px 16px;background:var(--berry);color:var(--bg);cursor:pointer;align-self:flex-start}
+.btn.ghost{background:transparent;color:var(--muted);padding:4px 8px;font-weight:600;font-size:.75rem}
+.idea{display:flex;gap:8px;justify-content:space-between;align-items:flex-start}
+.idea p{margin:0;min-width:0;overflow-wrap:anywhere}
+.idea time{display:block;font-size:.7rem;color:var(--muted);margin-top:4px}
+.note{font-size:.8rem;color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:.85rem}
+td{padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:700;white-space:nowrap;padding-left:0}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;z-index:5}
+nav.tabs .in{display:grid;grid-template-columns:repeat(5,1fr);max-width:640px;width:100%}
+nav.tabs button{font:inherit;border:0;background:none;color:var(--muted);font-size:.68rem;font-weight:600;padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;border-radius:10px}
+nav.tabs button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6}
+nav.tabs button[aria-current="page"]{color:var(--berry)}
+.sess>summary{list-style:none;color:var(--ink);font-size:inherit;font-weight:inherit}
+.sess .sess-body{margin-top:6px}
+.rec dl{margin-top:10px}
+.done-card{opacity:.6}
+.arow{display:grid;grid-template-columns:78px 1fr auto;gap:10px;align-items:baseline;padding:8px 0;border-top:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:.88rem}
+.arow:first-child{border-top:0}
+.arow .ad{font-weight:700;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.arow .as{font-size:.72rem;color:var(--muted)}
+.arow.on{opacity:.5}
+.chip.tr{background:#F4EBE2;color:#7A5A2E}
+.trb{color:#9A7337}
+.arow.on .at{text-decoration:line-through}
+.card[id]{scroll-margin-top:12px}
+.copybox{display:block;overflow-wrap:anywhere;white-space:pre-line;background:var(--bg,#F6EEEA);border:1px dashed var(--line);border-radius:8px;padding:8px 10px;margin-top:6px;font-size:.85rem;color:var(--ink);text-decoration:none}
+.file-btn{display:inline-block}
+.callout{background:var(--nude-soft);border-left:3px solid var(--nude);padding:10px 12px;border-radius:8px;margin-top:10px;font-size:.88rem}
+.login{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.login input{font:inherit;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--surface);color:var(--ink);width:100%}
+.days{display:flex;gap:6px;overflow-x:auto;margin:0 -16px;padding:2px 16px 6px;scrollbar-width:none}
+.days button{flex:none;width:52px;font:inherit;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:6px 0;display:flex;flex-direction:column;align-items:center;gap:1px;cursor:pointer;position:relative}
+.days button span{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.days button b{font-size:1.05rem;font-variant-numeric:tabular-nums}
+.days button.today{border-color:var(--berry)}
+.days button[aria-pressed="true"]{background:var(--berry);border-color:var(--berry);color:var(--bg)}
+.days button[aria-pressed="true"] span{color:var(--bg)}
+.days button i{position:absolute;bottom:4px;width:5px;height:5px;border-radius:50%;background:var(--nude)}
+details.card>summary{cursor:pointer;font-weight:600;color:var(--ink);font-size:.9rem}
+.swapbox{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.swapbox select{flex:1 1 200px;min-width:0;border-radius:10px}
+.swapped-note{font-size:.75rem;color:var(--berry);font-weight:600}
+.story .phrase{display:block;font-family:var(--body);font-weight:500;font-size:1.06rem;line-height:1.45;margin-top:4px;color:var(--ink)}
+.empty{padding:18px;text-align:center;color:var(--muted);font-size:.85rem;border:1px dashed var(--line);border-radius:var(--r)}
+@media (prefers-reduced-motion:no-preference){.card{transition:border-color .15s}}
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <img class="photo" src="data:image/jpeg;base64,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" alt="Isabella Handem" onerror="this.outerHTML='<div class=&quot;mono&quot; aria-hidden=&quot;true&quot;>IH</div>'">
-    <h1>Isabella Handem</h1>
-    <p class="tag">Te ajudo a enxergar sua beleza e potencial.</p>
+
+
+<div class="wrap">
+  <header class="top">
+    <h1 class="brand"><small>Isabella Handem · Beleza &amp; Negócios</small>Central de Conteúdo</h1>
+    <div class="sync" id="sync">carregando…</div>
   </header>
+  <div class="rule">Não produzir mais conteúdo do que a vida já está dando.</div>
 
-  <section class="club" aria-labelledby="club-t">
-    <p class="eyebrow" id="next"></p>
-    <h2 id="club-t">Handem Club: encontros de mulheres aqui na Ilha</h2>
-    <p>Uma experiência por mês para fazer com as mãos e levar pra casa. Pode vir sozinha.</p>
-    <a class="btn" id="cta-club" href="#">Quero participar</a>
-    <details>
-      <summary>Como funciona e valores</summary>
-      <div class="more">
-        <ul class="dates" id="dates"></ul>
-        <ul class="prices">
-          <li>Primeira vez: <strong>boas-vindas R$ 59,90</strong></li>
-          <li>Assinatura: <strong>R$ 79,90/mês</strong>, experiência inclusa (mínimo 3 meses)</li>
-          <li>Traga uma amiga: <strong>ela paga 50%</strong> na primeira</li>
-        </ul>
-        <a class="sitelink" id="l-site" href="#">Ver fotos e tudo sobre o Club →</a>
-      </div>
-    </details>
-  </section>
+  <main>
+    <section id="v-hoje"></section>
+    <section id="v-cal" hidden></section>
+    <section id="v-grav" hidden></section>
+    <section id="v-stories" hidden></section>
+    <section id="v-ideias" hidden></section>
+  </main>
+</div>
 
-  <nav class="links" aria-label="Links">
-    <a class="link curso" id="cta-curso" href="#"><div><b>Curso de automaquiagem online</b><span>Método Automake 21 dias, com aulas ao vivo</span></div><span class="price">R$ 47</span></a>
-    <a class="link" href="https://www.instagram.com/handemmakeup/"><div><b>Maquiagem e penteado</b><span>Atendimento com o meu time</span></div><i aria-hidden="true">→</i></a>
-    <a class="link" id="l-vestidos" href="#"><div><b>Aluguel de vestidos de festa</b><span>No Espaço Handem</span></div><i aria-hidden="true">→</i></a>
-    <a class="link" id="l-costura" href="#"><div><b>Escola de costura</b><span>Aulas no Espaço Handem</span></div><i aria-hidden="true">→</i></a>
-    <a class="link" href="https://www.instagram.com/espacohandem/"><div><b>Espaço Handem</b><span>@espacohandem</span></div><i aria-hidden="true">→</i></a>
-    <a class="link" id="l-parceria" href="#"><div><b>Parcerias e publicidade</b><span>Marcas e negócios</span></div><i aria-hidden="true">→</i></a>
-  </nav>
+<nav class="tabs" aria-label="Seções">
+  <div class="in">
+    <button data-v="hoje" aria-current="page"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Hoje</button>
+    <button data-v="cal"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Calendário</button>
+    <button data-v="grav"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="11" rx="2"/><path d="M16 11l5-3v9l-5-3"/></svg>Gravar</button>
+    <button data-v="stories"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-dasharray="4 2.5"/><circle cx="12" cy="12" r="4.5"/></svg>Stories</button>
+    <button data-v="ideias"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3z"/></svg>Narrativas</button>
+  </div>
+</nav>
 
-  <footer>
-    <p id="addr"></p>
-  </footer>
-</main>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script>
-const wa = (num, msg) => `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
-const me = CONFIG.whatsapp, esp = CONFIG.espaco, par = CONFIG.parceria;
-document.getElementById("cta-club").href   = wa(me, "Oi, Isa! Vim pelo Instagram e quero saber do Handem Club.");
-document.getElementById("cta-curso").href  = CONFIG.kiwify;
-document.getElementById("l-site").href = CONFIG.clubSite;
-document.getElementById("l-vestidos").href = wa(esp, "Oi! Vim pelo Instagram da Isa e quero saber do aluguel de vestidos de festa.");
-document.getElementById("l-costura").href  = wa(esp, "Oi! Vim pelo Instagram da Isa e quero saber das aulas da escola de costura.");
-document.getElementById("l-parceria").href = wa(par, "Oi! Vim pelo Instagram da Isa e quero falar sobre uma parceria.");
-document.getElementById("next").textContent = ENCONTROS.length ? "Próximo: " + ENCONTROS[0].datas : "Handem Club";
-document.getElementById("dates").innerHTML = ENCONTROS.map(e => `<li><b>${e.tema}</b><span>${e.datas}</span></li>`).join("");
-const addr = document.getElementById("addr");
-addr.innerHTML = CONFIG.mapa ? `${CONFIG.endereco} · <a href="${CONFIG.mapa}">ver no mapa</a>` : CONFIG.endereco;
+const ITEMS = [
+ {"id": "p01", "n": "#1", "d": "2026-10-16", "k": "A", "t": "Uma quinta comigo", "f": "Reel 20–30s só com cenas do dia, música, sem falar", "o": "Mostrar a vida acontecendo e reabrir o perfil com conexão", "h": "Texto na tela: “uma quinta comigo: noiva de manhã, São Paulo à tarde”", "dev": "Grave na quinta, 15/10, cenas de 3 a 5 segundos na ordem do dia: acordando e café; prévia de noiva (só mãos, pincéis, espelho e reação, com autorização dela); pegando o carro; estrada; chegando em São Paulo; reunião (mesa, café, notebook, sem mostrar telas); organização da inauguração de SJC (caixas, banner, equipe); a volta, já de noite. Na última cena, uma frase só: “dia cheio, do jeito que eu gosto.” Não explique o que é SJC: o #5 conta em 26/10.", "c": "Celular na vertical, 8 a 12 cenas. Mãos e rostos de costas valem. Edite na quinta à noite no CapCut ou no Instagram e deixe agendado para sexta, 10h.", "q": "Como é uma quinta na sua vida?", "x": "Legenda curta, sem venda. Só a pergunta.", "p": "Vida real", "tr": "Só se em 24h passar da sua média de views. R$ 10/dia por 5 dias · objetivo: visitas ao perfil · mulheres de 25 a 55 · raio de 8 km do Espaço.", "trv": 50, "trk": "Topo"},
+ {"id": "p02", "n": "#2", "d": "2026-10-19", "k": "P", "t": "Minha trajetória na maquiagem (papo)", "f": "Reel falado, 60–90s, sentada, olhando pra câmera", "o": "Conexão e autoridade, levando para a turma de 26/10", "h": "Ninguém me contou como era começar na maquiagem. Então eu vou te contar.", "dev": "Fale do seu jeito, sem roteiro decorado, respondendo 4 perguntas: 1) como a maquiagem entrou na sua vida; 2) a primeira cliente ou a primeira noiva; 3) o erro que mais te ensinou; 4) o que 7 anos maquiando mulheres te deram. Feche com o que você diria para quem está começando hoje.", "c": "Plano fechado, luz de janela, sem maquiagem pesada. Corte para 2 ou 3 fotos antigas suas trabalhando, se tiver. Legenda na tela em todas as falas.", "q": "Você lembra da primeira vez que alguém te maquiou?", "x": "Quer trabalhar com maquiagem? A turma Maquiador Profissional Iniciante começa segunda, 26/10, aqui na Ilha: às segundas, das 14h às 18h, por 3 meses, para quem está começando do zero. R$ 270 por mês. Restam 5 vagas. Manda TURMA no direct ou chama no WhatsApp (21) 98615-3800.", "p": "Vida real", "tr": "R$ 20/dia de 19 a 25/10 · objetivo: mensagens no WhatsApp · mulheres de 18 a 45 · raio de 8 km. Uma matrícula paga o anúncio.", "trv": 140, "trk": "Turma"},
+ {"id": "p03", "n": "#3", "d": "2026-10-21", "k": "P", "t": "Minha Ilha: a escola de costura da minha mãe", "f": "Reel 30–45s + versão de 15s para anúncio", "o": "Divulgar a escola e alcançar mulheres da Ilha", "h": "Tem uma escola de costura aqui na Ilha que muita gente não conhece. E ela é da minha mãe.", "dev": "Quem é a sua mãe, há quanto tempo ela ensina, para quem é a escola e o que a aluna já sai fazendo. Dias e horários [preencher]. Termine chamando no WhatsApp.", "c": "Fachada, sua mãe ensinando, mãos na máquina em close, peça pronta, uma aluna mostrando o que fez, você e sua mãe juntas no fim.", "q": "Você sempre quis aprender a costurar?", "x": "Tráfego: 7 dias, objetivo mensagens no WhatsApp, mulheres de 25 a 60 anos, raio de 5 a 8 km.", "p": "Minha Ilha", "top": 1, "tr": "R$ 10/dia por 7 dias · objetivo: mensagens no WhatsApp da escola · mulheres de 25 a 60 · raio de 5 a 8 km.", "trv": 70, "trk": "Negócio"},
+ {"id": "p04", "n": "#4", "d": "2026-10-23", "k": "P", "t": "Pele tem textura. E está tudo bem.", "f": "Reel falado + demonstração, 45–60s, sem filtro", "o": "Normalizar textura, mostrar técnica e levar para o curso e a turma", "h": "Isso aqui é poro. Isso é textura. E não tem nada de errado com a sua pele.", "dev": "Mostre a sua pele de perto, sem base e sem filtro. Diga que o filtro apaga textura e cria uma pele que não existe. Maquiagem não é para sumir com a pele, é para valorizar. Uma dica técnica: preparar bem, base fina em camadas e pó só onde brilha. Mostre o resultado em close: pele bonita, com textura aparecendo.", "c": "Close bem perto com luz lateral (é ela que mostra textura), antes e depois. Texto na tela: “sem filtro”.", "q": "Você usa filtro pra postar foto?", "x": "Para quem quer se maquiar: Quer aprender a fazer isso no seu rosto? Meu Método Automake 21 dias custa R$ 47 e tem 2 encontros ao vivo comigo por mês. Link na bio. Para quem quer trabalhar com maquiagem: Quer trabalhar com maquiagem? A turma Maquiador Profissional Iniciante começa segunda, 26/10, aqui na Ilha: às segundas, das 14h às 18h, por 3 meses, para quem está começando do zero. R$ 270 por mês. Restam 5 vagas. Manda TURMA no direct ou chama no WhatsApp (21) 98615-3800.", "p": "Aula → curso", "tr": "O melhor topo de funil do ciclo: assunto que toda mulher compartilha. R$ 15/dia por 5 dias · objetivo: visualizações · mulheres de 25 a 55 · raio de 8 km. Quem assistir vira público para os anúncios do Club e do curso.", "trv": 75, "trk": "Topo"},
+ {"id": "p05", "n": "#5", "d": "2026-10-26", "k": "A", "t": "Abrimos nossa primeira operação fora do Rio", "f": "Mini-documentário, 45–60s, narração sua", "o": "História real e negócios", "h": "Sábado a gente abriu nossa primeira operação fora do Rio.", "dev": "Saída do Rio, chegada, montagem, equipe, portas abrindo, primeiros alunos e a sua fala no fim: “acho que só agora caiu a ficha”.", "c": "Checklist da inauguração de SJC (24/10) na aba Gravar.", "q": "Qual foi a coisa mais corajosa que você fez esse ano?", "x": "Collab com o perfil dos polos UniFECAF.", "p": "Vida real"},
+ {"id": "p06", "n": "#6", "d": "2026-10-28", "k": "P", "t": "Depois de adulta, onde a gente faz novas amigas?", "f": "Reel falado, 40–60s, com imagens do Beauty Experience", "o": "Pertencimento e lista do Club", "h": "Depois de adulta, onde a gente faz novas amigas?", "dev": "Trabalho, filhos, rotina: a gente vai ficando sem lugar para conhecer gente. Conte que percebeu isso nas suas clientes e criou um lugar de encontro. Só no fim fale o nome Handem Club e que sábado tem Oficina de Velas.", "c": "Sua fala intercalada com imagens do Beauty Experience (risadas, mesa, mãos).", "q": "Você sente falta de ter um grupo de mulheres na sua vida?", "x": "Manda CLUB no direct que eu te conto como funciona.", "p": "Mulheres · Club", "tr": "Aquece o público do Club antes do anúncio de 2/11. R$ 15/dia por 5 dias · objetivo: visitas ao perfil · mulheres de 30 a 60 · raio de 6 km.", "trv": 75, "trk": "Topo"},
+ {"id": "p07", "n": "#7", "d": "2026-10-30", "k": "A", "t": "A primeira coisa que muda numa aula não é a maquiagem", "f": "Reel com cenas da turma, 30–45s", "o": "Prova real e venda do curso", "h": "A primeira coisa que muda numa aula de automaquiagem não é a maquiagem.", "dev": "O choque da aluna: a insegurança no começo, o momento em que ela entende o próprio rosto, a reação no espelho. Feche com “é isso que eu ensino: entender o seu rosto”.", "c": "Clipes da Automake Class de 19/10: aluna se olhando no espelho, você corrigindo, um depoimento curto.", "q": "O que te impede de aprender a se maquiar do jeito que você queria?", "x": "Mora longe? Quer aprender a fazer isso no seu rosto? Meu Método Automake 21 dias custa R$ 47 e tem 2 encontros ao vivo comigo por mês. Link na bio. Mora na Ilha? Manda TURMA no direct.", "p": "Aula → curso"},
+ {"id": "p08", "n": "#8", "d": "2026-11-02", "k": "A", "t": "Handem Club: o sábado da Oficina de Velas", "f": "Reel sem narração, só áudio real e música baixa, 30–45s", "o": "Desejo de participar", "h": "Primeira cena com risada ou mãos acendendo uma vela. Texto: “Sábado, 14h. Muitas não se conheciam.”", "dev": "Chegada, primeiros minutos, mãos na cera, risadas, mesa, velas prontas, foto do grupo.", "c": "Checklist do Club (31/10) na aba Gravar.", "q": "Sem pergunta.", "x": "Próximo Handem Club: 25 e 28/11. Primeira vez? Experiência de boas-vindas por R$ 59,90. Assinante traz uma amiga com 50% off. Manda CLUB no direct.", "p": "Mulheres · Club", "tr": "O anúncio principal do Club. R$ 20/dia por 14 dias · objetivo: mensagens · mulheres de 30 a 60 · raio de 6 km · destino: boas-vindas R$ 59,90 em 25 ou 28/11.", "trv": 280, "trk": "Club"},
+ {"id": "p09", "n": "#9", "d": "2026-11-04", "k": "A", "t": "Minha Ilha: Teatro da Ilha", "f": "Reel 20–30s em collab", "o": "Novidade local e alcance", "h": "Maquio noiva há 7 anos. Fui descobrir se existe vida após o casamento.", "dev": "Você chegando ao Teatro da Ilha, a sala de 700 lugares, o cartaz da peça, sua reação na saída. Convide para as próximas atrações.", "c": "Takes do dia 29/10 (checklist na aba Gravar).", "q": "Quem você levaria nessa peça?", "x": "Collab com o perfil do teatro e, se der, do Jonathan Nemer.", "p": "Minha Ilha", "top": 1},
+ {"id": "p10", "n": "#10", "d": "2026-11-06", "k": "P", "t": "Porque eu não sei me maquiar · parte 4: blush", "f": "Reel tutorial, 20–30s, uma dica só", "o": "Retomar a série e vender o curso", "h": "Porque eu não sei me maquiar, parte 4: o blush não tem lugar certo. Tem o lugar certo pro seu rosto.", "dev": "Sorria para achar a maçã, aplique puxando para cima e mostre como a pessoa encontra o lugar no próprio espelho.", "c": "Close de frente, aplicação com o pincel, resultado em luz natural. Texto na tela: “parte 4”.", "q": "Onde você passa o seu blush hoje?", "x": "Quer aprender a fazer isso no seu rosto? Meu Método Automake 21 dias custa R$ 47 e tem 2 encontros ao vivo comigo por mês. Link na bio.", "p": "Aula → curso"},
+ {"id": "p11", "n": "#11", "d": "2026-11-09", "k": "A", "t": "Carrossel do Club: “essa é a ideia.”", "f": "Carrossel de 8 vídeos em tela dividida, fonte e bordô do Club", "o": "Abrir a experiência de boas-vindas", "h": "Um encontro só de mulheres num sábado à tarde? Essa é a ideia.", "dev": "Slides: 1) Um encontro só de mulheres num sábado à tarde? · 2) Ir sem conhecer ninguém? · 3) Fazer vela sem nunca ter feito? · 4) Três horas sem resolver nada pra ninguém? · 5) Sair de lá com algo feito por você? · 6) Sair com amiga nova? · 7) Um lugar feito pra mulher adulta se encontrar? · 8) A próxima é dia 25 e 28/11. Comenta CLUB.", "c": "Embaixo de cada pergunta, um clipe do dia 31/10 com o texto “essa é a ideia.”", "q": "Legenda: “Isso nunca foi só sobre fazer velas.”", "x": "Próximo Handem Club: 25 e 28/11. Primeira vez? Experiência de boas-vindas por R$ 59,90. Assinante traz uma amiga com 50% off. Manda CLUB no direct.", "p": "Mulheres · Club", "tr": "Para quem já te conhece: R$ 10/dia por 5 dias · público: quem interagiu com o perfil nos últimos 30 dias · objetivo: mensagens.", "trv": 50, "trk": "Club"},
+ {"id": "p12", "n": "#12", "d": "2026-11-11", "k": "P", "t": "Manda pra sua mãe: ela pode, sim, usar iluminador", "f": "Reel tutorial, 20–30s", "o": "Ser enviado (o sinal que mais traz alcance) e falar com 40+", "h": "Se a sua mãe acha que não pode mais usar iluminador, manda esse vídeo pra ela.", "dev": "Iluminador cremoso, só no alto da maçã e na ponte do nariz, pouca quantidade. Onde evitar: textura marcada.", "c": "Aplicação com o dedo, close com luz lateral mostrando o brilho.", "q": "Pra quem você vai mandar esse vídeo?", "x": "Quer aprender a fazer isso no seu rosto? Meu Método Automake 21 dias custa R$ 47 e tem 2 encontros ao vivo comigo por mês. Link na bio.", "p": "Aula → curso", "tr": "Só se passar da sua média: é o tipo de vídeo que a pessoa manda pra mãe. R$ 10/dia por 5 dias · objetivo: visualizações · mulheres de 25 a 60 · raio de 8 km.", "trv": 50, "trk": "Topo"},
+ {"id": "p13", "n": "#13", "d": "2026-11-13", "k": "P", "t": "Depois de 11 anos juntos, a gente decidiu casar", "f": "Reel 20–30s com fotos antigas e atuais", "o": "Abrir a narrativa do casamento", "h": "Onze anos juntos. E agora a gente decidiu casar.", "dev": "Fotos de vocês ao longo dos anos em sequência, terminando numa atual e numa fala curta sua sobre por que agora.", "c": "Fotos do celular + 1 take seu falando.", "q": "O que você acha que muda depois de tanto tempo junto?", "x": "Só se você quiser contar agora. Se não, troque por uma narrativa da aba Narrativas.", "p": "Vida real"},
+ {"id": "p14", "n": "#14", "d": "2026-11-16", "k": "A", "t": "“Eu vim sozinha.” Depoimentos do Club", "f": "Reel de depoimentos, 30–45s", "o": "Tirar o medo de ir sem conhecer ninguém", "h": "“Eu vim sozinha. Não conhecia ninguém.” (fala de uma participante)", "dev": "3 ou 4 depoimentos curtos gravados no dia 31/10: como chegou, o que levou de lá.", "c": "Depoimentos do checklist do Club (31/10).", "q": "Você iria sozinha?", "x": "Próximo Handem Club: 25 e 28/11. Primeira vez? Experiência de boas-vindas por R$ 59,90. Assinante traz uma amiga com 50% off. Manda CLUB no direct.", "p": "Mulheres · Club", "tr": "Última chamada do Club de novembro. R$ 15/dia de 16 a 23/11 · objetivo: mensagens · mulheres de 30 a 60 · raio de 6 km + quem interagiu nos últimos 30 dias.", "trv": 120, "trk": "Club"},
+ {"id": "p15", "n": "#15", "d": "2026-11-18", "k": "P", "t": "Minha Ilha: aluguel de vestidos de festa", "f": "Reel 20–30s", "o": "Divulgar a sala de vestidos antes das festas de fim de ano", "h": "Festa de fim de ano chegando e nada pra vestir? Tem uma sala aqui na Ilha só de vestido de festa.", "dev": "Você provando 3 vestidos, detalhes, como funciona o aluguel e como agendar [preencher valores e contato].", "c": "Sala, araras, você provando, close dos detalhes, espelho.", "q": "Qual desses você escolheria?", "x": "Pode impulsionar na Ilha por 5 a 7 dias.", "p": "Minha Ilha", "top": 1, "tr": "R$ 10/dia por 7 dias · objetivo: mensagens no WhatsApp do Espaço · mulheres de 18 a 50 · raio de 8 km.", "trv": 70, "trk": "Negócio"},
+ {"id": "p16", "n": "#16", "d": "2026-11-20", "k": "P", "t": "Maquiagem com 3 produtos", "f": "Reel 20–30s, acelerado", "o": "Alcance + curso", "h": "Três produtos. É isso que eu uso quando não tenho tempo.", "dev": "Sem tese: os 3 produtos, a aplicação e o resultado.", "c": "Bancada, aplicação rápida, resultado em luz natural.", "q": "Quais seriam os seus 3?", "x": "Quer aprender a fazer isso no seu rosto? Meu Método Automake 21 dias custa R$ 47 e tem 2 encontros ao vivo comigo por mês. Link na bio.", "p": "Aula → curso"},
+ {"id": "p17", "n": "#17", "d": "2026-11-23", "k": "A", "t": "Quarta e sábado tem Club: o caderno costurado à mão", "f": "Reel bastidor, 20–30s", "o": "Última chamada para novembro", "h": "Quarta e sábado, mulheres vão sair daqui com um caderno feito por elas.", "dev": "Bastidor da preparação: papéis, linhas, a sala de costura, você testando.", "c": "Clipes da preparação entre 20 e 23/11.", "q": "Sem pergunta.", "x": "Últimas vagas da experiência de boas-vindas (R$ 59,90). Manda CLUB.", "p": "Mulheres · Club"},
+ {"id": "p18", "n": "#18", "d": "2026-11-27", "k": "P", "t": "Porque eu não sei me maquiar · parte 5: corretivo", "f": "Reel tutorial, 20–30s, uma dica só", "o": "Série + curso", "h": "Porque eu não sei me maquiar, parte 5: o corretivo não precisa ocupar metade do rosto.", "dev": "Só onde escurece, em pouca quantidade, esfumado nas bordas. Mostre um lado com excesso e o outro do jeito certo.", "c": "Close do olho, as duas metades, resultado. Texto na tela: “parte 5”.", "q": "Qual dica você quer na parte 6?", "x": "Quer aprender a fazer isso no seu rosto? Meu Método Automake 21 dias custa R$ 47 e tem 2 encontros ao vivo comigo por mês. Link na bio.", "p": "Aula → curso"},
+ {"id": "p19", "n": "#19", "d": "2026-11-30", "k": "A", "t": "Club de novembro: o caderno que vai guardar a carta de dezembro", "f": "Reel do encontro, 30–45s", "o": "Fechar o ciclo e anunciar dezembro", "h": "O caderno que elas costuraram vai guardar a carta de dezembro.", "dev": "Momentos do encontro (25 e 28/11) e o anúncio: dezembro é dia 16 e 19, “Carta para mim mesma”, num lugar parceiro.", "c": "Checklist do Club (25 e 28/11).", "q": "O que você escreveria numa carta para você mesma?", "x": "Manda CLUB para garantir a vaga de dezembro.", "p": "Mulheres · Club"}
+];
+ITEMS.sort((a,b)=>a.d.localeCompare(b.d));
+
+const SESSIONS = [{"id": "g0", "d": "2026-10-17", "l": "Em casa · sábado", "dur": "40 min", "it": ["p02", "p04"], "need": "Os dois falados no mesmo dia, com a mesma roupa. Grave primeiro a trajetória, depois a pele sem base para o #4, e só então se maquie para o depois. Separe fotos antigas suas trabalhando."}, {"id": "g1", "d": "2026-10-20", "l": "Gravação 1 · Espaço Handem", "dur": "3h", "it": ["p03", "p10", "p12", "p16"], "need": "Combinar com sua mãe um horário de aula na escola de costura para o #3. As 3 aulas com o mesmo look, trocando só a blusa."}, {"id": "g2", "d": "2026-10-27", "l": "Gravação 2 · Espaço Handem", "dur": "1h30", "it": ["p06", "p13", "p15"], "need": "Separar 3 vestidos para o #15. Fotos antigas do casal no celular para o #13 (se for contar)."}, {"id": "g3", "d": "2026-11-17", "l": "Gravação 3 · Espaço Handem", "dur": "1h", "it": ["p18"], "need": "Corretivo (parte 5). Separar os clipes do 31/10 para editar o #11 e o #14."}];
+
+const RITUALS = [
+ {d:"Domingo",r:"Leitura da vez",m:"Livro do momento + uma frase sua sobre ele",i:"Enquete “já leu?”"},
+ {d:"Segunda",r:"Agenda da semana",m:"Os 3 assuntos da semana (empresa, beleza, evento)",i:"Contagem regressiva para SJC (24/10) e Club (31/10)"},
+ {d:"Terça",r:"Dia de gravação",m:"Bastidor da gravação: luz, look, um erro de gravação",i:"Enquete “qual vocês querem ver primeiro?”"},
+ {d:"Quarta",r:"Pergunta pra maquiadora",m:"Caixinha aberta o dia todo",i:"Caixa de perguntas"},
+ {d:"Quinta",r:"Respostas",m:"4–6 respostas em vídeo curto; as melhores viram Reel",i:"Reação + “manda mais”"},
+ {d:"Sexta",r:"Vida acontecendo",m:"SJC, time, aula, atendimento",i:"Resultado do “Certo ou errado?” de terça"},
+ {d:"Sábado",r:"Livre / evento",m:"Club, noiva ou dia comum",i:"—"}
+];
+
+const DAILY = [
+ {m:"Manhã, até 9h",g:"Rosto falando: bom dia + o que vem hoje, em uma frase com texto na tela",q:"1–2"},
+ {m:"Manhã",g:"O ritual do dia",q:"1–2"},
+ {m:"Meio do dia",g:"Trabalho acontecendo: aula, atendimento, time, reunião, SJC",q:"2–4"},
+ {m:"Meio do dia",g:"Um momento beleza: produto que usou, retoque, dica de 15s",q:"1"},
+ {m:"Tarde",g:"Uma interação: enquete, caixinha, quiz ou “você decide”",q:"1"},
+ {m:"Tarde",g:"Bastidor do que vem aí, com contagem (SJC, Club, turma)",q:"1"},
+ {m:"Noite",g:"Prova social: repost de aluna, cliente ou menção",q:"1–2"},
+ {m:"Noite",g:"Fecho com rosto: o que ficou do dia, uma leitura ou um pensamento",q:"1"}
+];
+const AGENDA = [["2026-10-15", "Prévia de noiva + São Paulo (gravar o #1)"], ["2026-10-18", "Noiva"], ["2026-10-19", "Automake Class"], ["2026-10-24", "Inauguração SJC · 17h"], ["2026-10-26", "Início da turma Maquiador Profissional Iniciante"], ["2026-10-29", "Existe vida após o casamento · Teatro da Ilha · 20h"], ["2026-10-31", "Handem Club · Oficina de Velas · 14h"], ["2026-11-25", "Handem Club · caderno costurado (quarta)"], ["2026-11-28", "Handem Club · caderno costurado (sábado)"], ["2026-12-16", "Handem Club · Carta para mim mesma (quarta)"], ["2026-12-19", "Handem Club · Carta para mim mesma (sábado)"]];
+const TEATRO = [
+ ["2026-10-13","Visita ao teatro: você entrando, a sala, “vem coisa aí dia 29”"],
+ ["2026-10-20","Convite: “dia 29 eu vou, quem vem?” + link dos ingressos (jonathannemer.com.br)"],
+ ["2026-10-23","Caixinha: “o que ninguém te conta sobre a vida depois do casamento?” + link"],
+ ["2026-10-27","Respostas da caixinha + “faltam 2 dias” + link"],
+ ["2026-10-28","Véspera: “amanhã às 20h, te encontro no Teatro da Ilha”"]
+];
+const TEMPLATES = {
+ aula:{abertura:"Pegue a Isabella 1 minuto antes de começar e grave a fala de abertura: “Hoje é dia de [nome da aula]. Vem ver como foi.”",
+  antes:["Fala de abertura da Isabella (1 min antes de começar)","Sala vazia e bancada montada, de cima","Alunas chegando"],
+  durante:["Risadas da turma (deixe gravando, mesmo sem saber se vai rir)","Erro técnico e a correção logo em seguida, na mesma aluna","Aluna se emocionando ou surpresa no espelho","Close de mãos aplicando produto (3 alunas diferentes)","Isabella explicando para a turma","Isabella corrigindo uma aluna de perto"],
+  final:["Depoimento de 2–3 alunas (perguntas abaixo)","Foto da turma","Fala de fechamento da Isabella, 30s","Autorização de imagem de quem aparece"],
+  perguntas:["Como você se maquiava antes da aula?","O que mudou hoje?","Pra quem você indicaria essa aula?"]},
+ noiva:{abertura:"Antes de abrir a mala, grave a Isabella em 1 minuto: “Hoje é dia da [nome da noiva]. O casamento é às [hora].”",
+  antes:["Fala de abertura da Isabella","Chegada e mala abrindo","Bancada organizada, de cima","Detalhes: vestido, sapato, buquê, convite"],
+  durante:["Isabella olhando a pele e conversando com a noiva antes de começar","Preparo de pele em close","Risadas entre a Isabella e a noiva","Mãe, madrinhas ou amigas se emocionando","Técnica: olhos e pele, 3 closes"],
+  final:["Reação no espelho: comece a gravar ANTES de ela se virar (take mais importante do dia)","Resultado em luz natural","Depoimento da noiva, 30s, só se não atrasar o cronograma","Autorização de imagem da noiva"],
+  perguntas:["Como você se sentiu quando se viu?","Uma palavra pra descrever a maquiagem?"],cuidado:"Sem flash e sempre fora do enquadramento do fotógrafo."},
+ club:{abertura:"30 minutos antes de abrir a porta, grave a Isabella: “Faltam 30 minutos pro Handem Club. Olha como tá ficando.”",
+  antes:["Fala de abertura da Isabella","Mesa vazia, detalhes e kits","Isabella arrumando os últimos detalhes"],
+  durante:["Chegadas e abraços na porta","1 minuto com o celular parado gravando só o áudio do ambiente","Mãos na atividade","Risadas e conversas entre mulheres que acabaram de se conhecer","Comida e mesa posta","Isabella observando de longe","Pergunta rápida para 4–6 mulheres: “o que você faz só por você?” (15s cada)"],
+  final:["Depoimento de 2 participantes (perguntas abaixo)","Resultado da atividade e mesa no fim","Foto de grupo","Fala da Isabella depois que todas forem embora","Autorizações"],
+  perguntas:["Como você chegou aqui?","O que você leva de hoje?","Você voltaria? Por quê?"]},
+ evento:{abertura:"Grave a Isabella antes de começar: onde estamos e o que vai acontecer hoje.",
+  antes:["Fala de abertura da Isabella","Fachada e lugar vazio","Montagem e equipe"],
+  durante:["Pessoas chegando","Reações e risadas","Detalhes do lugar","Isabella em ação"],
+  final:["Fala da Isabella no fim: o que ficou do dia","Lugar cheio ou resultado","Autorizações"],perguntas:[]}
+};
+const CAPDAYS = [{"id": "d1015", "d": "2026-10-15", "t": "Uma quinta comigo · prévia de noiva + São Paulo", "tipo": "evento", "feeds": "#1 (16/10)", "extra": ["Café e saída de casa", "Prévia de noiva: mãos, pincéis, espelho e reação (com autorização)", "Pegando o carro e estrada", "Chegada em São Paulo", "Reunião: mesa, café, notebook (sem telas)", "Organização da inauguração de SJC: caixas, banner, equipe", "Volta, já de noite"]}, {"id": "d1018", "d": "2026-10-18", "t": "Noiva", "tipo": "noiva", "feeds": "Banco para dezembro", "extra": []}, {"id": "d1019", "d": "2026-10-19", "t": "Automake Class", "tipo": "aula", "feeds": "#7 (30/10)", "extra": ["Reação das alunas no espelho é o take principal do #7", "Fala da Isabella logo depois: “A primeira coisa que muda numa aula não é a maquiagem”"]}, {"id": "d1024", "d": "2026-10-24", "t": "Inauguração SJC · 17h", "tipo": "evento", "feeds": "#5 (26/10), em collab com os polos", "extra": ["Estrada ou aeroporto saindo do Rio", "Fala de abertura do evento", "Primeiros alunos", "Fala da Isabella depois que todo mundo for embora: “acho que só agora caiu a ficha”"]}, {"id": "d1026", "d": "2026-10-26", "t": "1º dia · Maquiador Profissional Iniciante", "tipo": "aula", "feeds": "Banco para dezembro", "extra": ["Alunas se apresentando: “por que você quer ser maquiadora?” (3 alunas, 15s cada)"]}, {"id": "d1029", "d": "2026-10-29", "t": "Teatro da Ilha · 20h", "tipo": "evento", "feeds": "#9 (4/11), em collab", "extra": ["Cartaz da peça", "Isabella rindo durante a peça, se o teatro permitir filmar", "Reação da Isabella na saída"]}, {"id": "d1031", "d": "2026-10-31", "t": "Handem Club · Oficina de Velas · 14h", "tipo": "club", "feeds": "#8 (2/11) · #11 carrossel (9/11) · #14 depoimentos (16/11)", "extra": ["Para o carrossel #11: duas que se conheceram rindo, conversa e café, mãos na cera, abraço na saída, sala cheia, Isabella sorrindo pra câmera", "Para o #14: 3 a 4 depoimentos curtos, perguntando “você veio sozinha?”"]}, {"id": "d1125", "d": "2026-11-25", "t": "Handem Club · caderno costurado (quarta)", "tipo": "club", "feeds": "#19 (30/11)", "extra": ["Mãos costurando o caderno em close", "Depoimento de quem veio pela primeira vez"]}, {"id": "d1128", "d": "2026-11-28", "t": "Handem Club · caderno costurado (sábado)", "tipo": "club", "feeds": "#19 (30/11)", "extra": ["Cadernos prontos na mesa", "Depoimento de quem veio com uma amiga"]}];
+const CAPRULES = "Vertical, câmera traseira, lente limpa. Clipes de 5–10s, segurando 2s antes e depois. Sem falar durante o take. Tudo no álbum compartilhado no mesmo dia, com o nome do dia.";
+
+const BANK = [
+ {id:"n31",serie:"Porque eu não sei me maquiar",esf:"Gravação",t:"Parte 6: pó só onde brilha",f:"Reel tutorial, 20–30s, uma dica só",o:"Série + curso",h:"Porque eu não sei me maquiar, parte 6: pó não é pro rosto inteiro. É só onde brilha.",dev:"Mostre onde a pele brilha (testa, nariz, queixo), pouco produto, e o resto do rosto sem pó.",c:"Close com luz lateral, antes e depois. Texto: “parte 6”.",q:"Qual dica você quer na parte 7?"},
+ {id:"n30",serie:"Vida além do trabalho",esf:"Gravação leve",t:"Por que eu parei de atender",f:"Reel 30–45s, cenas do dia a dia + uma fala sua no fim",o:"Contar a mudança depois de vivida, sem anúncio",h:"Faz dois meses que eu não acordo pensando em cliente.",dev:"Use depois de 1 ou 2 meses da mudança (dezembro ou janeiro). Mostre a manhã sem pressa: acordar tarde, café da manhã, seus filhos, sua família. No fim, uma frase sua: a vida não é só trabalho, e agora você está vendo ela. Sem lista de regras, sem explicar quem atende.",c:"Ir guardando no celular desde já: café da manhã, filhos brincando, almoço de família, você de pijama. Vídeos de 3 a 5 segundos.",q:"O que você deixaria de fazer pra ter mais tempo pra você?"},
+ {id:"n01",serie:"Casar depois de 11 anos",esf:"15 min",t:"Depois de 11 anos juntos, a gente decidiu casar.",f:"Reel 20–30s com fotos antigas e atuais",o:"Abrir a narrativa e gerar conversa",h:"Onze anos de união estável. E agora a gente decidiu casar.",dev:"Fotos de vocês ao longo dos anos em sequência rápida, terminando numa atual. Uma frase sua sobre por que agora, sem explicar tudo.",c:"Fotos antigas no celular + 1 take seu falando no fim.",q:"O que você acha que muda depois de tanto tempo junto?"},
+ {id:"n02",serie:"Casar depois de 11 anos",esf:"Gravação",t:"Maquio noiva há 7 anos. Agora a noiva sou eu.",f:"Reel bate-papo, 45–60s",o:"Unir a narrativa ao seu trabalho com noivas",h:"Eu já maquiei centenas de noivas. Nunca pensei em como seria estar do outro lado da cadeira.",dev:"O que você sempre viu nas noivas na manhã do casamento e o que está sentindo agora que vai viver isso.",c:"Fala + cortes de noivas que você maquiou (com autorização).",q:"Noivas que me acompanham: o que vocês sentiram na manhã do casamento?"},
+ {id:"n03",serie:"Casar depois de 11 anos",esf:"15 min",t:"Quem maquia a maquiadora?",f:"Reel curto, 15–20s, enquete",o:"Comentários",h:"Pergunta séria: quem maquia a maquiadora no dia do casamento dela?",dev:"Duas opções na tela: eu mesma ou outra maquiadora. Deixar a resposta em aberto.",c:"Você na bancada olhando para a câmera.",q:"Eu mesma ou chamo alguém? Me ajuda."},
+ {id:"n04",serie:"Casar depois de 11 anos",esf:"Gravação",t:"O que eu sempre digo pras minhas noivas e agora vou ter que seguir",f:"Reel tutorial/dicas, 45–60s",o:"Utilidade para noivas + autoridade",h:"Tem coisa que eu falo pra toda noiva. Agora é a minha vez de obedecer.",dev:"3 conselhos reais: teste de maquiagem antes, pele sem novidade na última semana, maquiagem que aguente o dia inteiro.",c:"Você na bancada demonstrando cada ponto.",q:"Qual desses você não sabia?"},
+ {id:"n05",serie:"Casar depois de 11 anos",esf:"Gravação",t:"Meu teste de maquiagem de noiva: A ou B?",f:"Reel 20–30s, duas versões",o:"Comentários + quem acompanha decide junto",h:"Fiz duas maquiagens de teste para o meu casamento. Vocês escolhem.",dev:"Versão A e versão B lado a lado, mesma luz. Resultado depois nos Stories.",c:"Você com cada versão, luz natural, de frente e de perfil.",q:"A ou B?"},
+ {id:"n06",serie:"Casar depois de 11 anos",esf:"Gravação",t:"Por que casar depois de 11 anos?",f:"Reel bate-papo, 45–60s",o:"Conexão",h:"Muita gente me perguntou: depois de 11 anos, por que casar agora?",dev:"Sua resposta, com calma. O que mudou e o que continua igual.",c:"Plano fechado, luz suave.",q:"Você acha que casar muda alguma coisa depois de tanto tempo?"},
+ {id:"n07",serie:"Casar depois de 11 anos",esf:"15 min",t:"Organizar um casamento tocando 4 empresas",f:"Reel bastidor, 20–30s",o:"Negócios + vida real",h:"Organizar um casamento enquanto abre uma unidade em outro estado. Vamos ver no que dá.",dev:"Bastidor sincero: lista, reuniões, prioridades. Sem glamourizar.",c:"Agenda, notebook, lista, você entre uma reunião e outra.",q:"Quem aqui também está organizando tudo ao mesmo tempo?"},
+ {id:"n08",serie:"Casar depois de 11 anos",esf:"Ao vivo",t:"Uma despedida do jeito Handem Club",f:"Reel do evento",o:"Ligar o casamento à comunidade",h:"Em vez de despedida de solteira, eu quis um encontro de mulheres.",dev:"Uma edição especial do Club como despedida. Mostrar o encontro e por que você escolheu assim.",c:"Checklist do tipo Club na aba Gravar.",q:"Você faria uma despedida assim?"},
+ {id:"n09",serie:"Casar depois de 11 anos",esf:"15 min",t:"Diário da noiva maquiadora",f:"Série de Stories semanal",o:"Fazer as pessoas voltarem",h:"Diário da noiva maquiadora · faltam X dias.",dev:"Um Story por semana com uma decisão ou um bastidor: vestido (sem mostrar), pele, cardápio, convite.",c:"O que estiver acontecendo naquela semana.",q:"Enquete ou caixinha em cada edição."},
+ {id:"n10",serie:"Automaquiagem",esf:"Gravação",t:"“Porque eu não sei me maquiar” · parte 6",f:"Reel tutorial, 15–30s, uma dica só",o:"Série recorrente",h:"Porque eu não sei me maquiar, parte 6: pó só onde brilha.",dev:"Ou a dúvida mais pedida nos comentários da parte 5. Uma dica, demonstrada.",c:"Close da aplicação + texto “parte 6”.",q:"Qual dica você quer na parte 7?"},
+ {id:"n11",serie:"Automaquiagem",esf:"15 min",t:"Maquiagem com 3 produtos",f:"Reel 20–30s, acelerado",o:"Alcance + respiro",h:"Três produtos. É isso que eu uso quando não tenho tempo.",dev:"Sem tese: os 3 produtos e o resultado.",c:"Bancada, aplicação rápida, resultado em luz natural.",q:"Quais seriam os seus 3?"},
+ {id:"n12",serie:"Pele madura",esf:"Gravação",t:"Na pele madura, textura vem antes da cor",f:"Reel técnico, 30–45s",o:"Autoridade",h:"Antes de escolher a cor da base, olha a textura.",dev:"Base mais fluida x mais densa na mesma pele, com close mostrando a diferença.",c:"Modelo de pele madura, luz lateral.",q:"Você escolhe base pela cor ou pela textura?"},
+ {id:"n13",serie:"Pele madura",esf:"Gravação",t:"Corretivo na pele madura: menos onde marca",f:"Reel técnico, 30–45s",o:"Técnica + salvamentos",h:"Na pele madura, o corretivo vai onde escurece, não onde marca.",dev:"Onde aplicar, onde evitar e a quantidade certa.",c:"Close do olho, lado certo e lado errado.",q:"Seu corretivo marca nas linhas?"},
+ {id:"n14",serie:"Autocuidado",esf:"15 min",t:"Uma coisa que eu faço só por mim toda semana",f:"Reel bate-papo curto, 20–30s",o:"Conexão + Club",h:"Tem uma coisa que eu não abro mão, nem na semana mais corrida.",dev:"O que é, por que importa, sem receita para ninguém.",c:"Você fazendo essa coisa + fala curta.",q:"E você, o que faz só por você?"},
+ {id:"n15",serie:"Autoconhecimento",esf:"Gravação",t:"Uma coisa que eu entendi sobre mim este ano",f:"Reel bate-papo, 45–60s",o:"Profundidade",h:"Esse ano eu entendi uma coisa sobre mim que mudou a forma como eu trabalho.",dev:"Uma percepção real, com um exemplo concreto. Sem lição pronta.",c:"Plano fechado.",q:"O que você entendeu sobre você este ano?"},
+ {id:"n16",serie:"Negócios",esf:"15 min",t:"Como eu organizo o conteúdo com 4 empresas",f:"Reel bastidor, 20–30s",o:"Negócios + curiosidade",h:"Eu criei um app só pra não esquecer o que postar.",dev:"Mostrar a Central: o post do dia, o dia de gravação e o checklist de quem filma.",c:"Tela do celular gravada + você usando no dia a dia.",q:"Quer que eu mostre como montei?"},
+ {id:"n17",serie:"Negócios",esf:"Gravação",t:"Um erro que me custou caro e o que eu mudei",f:"Reel bate-papo, 45–60s",o:"Negócios com história real",h:"Teve um erro que me custou caro. E eu demorei pra admitir.",dev:"Um erro concreto, o que aconteceu e o que você faz diferente hoje.",c:"Plano médio, tom de conversa.",q:"Qual erro te ensinou mais?"},
+ {id:"n18",serie:"Handem Club",esf:"Gravação",t:"Por que eu criei o Handem Club",f:"Reel bate-papo + imagens do Club",o:"Comunidade + lista do Club",h:"O Handem Club nasceu de uma pergunta que eu me fazia.",dev:"A origem real do Club e o que você quer que ele seja. Fechar com “Manda CLUB no direct”.",c:"Fala + imagens do Beauty Experience e da Oficina de Velas.",q:"Manda CLUB no direct pra entrar na lista."}
+];
+const BANKBY = Object.fromEntries(BANK.map(b=>[b.id,b]));
+function swapOf(id){ const a=ck("troca-"+id); return a.length?BANKBY[a[0]]:null }
+function resolved(i){ const b=swapOf(i.id); return b?{...i,t:b.t,f:b.f,o:b.o,h:b.h,dev:b.dev,c:b.c,q:b.q,x:"",p:b.serie,swapped:b,orig:i.t}:i }
+let bankSerie="todas";
+function bankSection(){
+  const t=todayStr();
+  const upcoming=ITEMS.filter(i=>i.d>=t && st(i.id)<4).slice(0,16);
+  const used={}; ITEMS.forEach(i=>{const b=swapOf(i.id); if(b) used[b.id]=i});
+  const series=["todas",...new Set(BANK.map(b=>b.serie))];
+  const list=BANK.filter(b=>bankSerie==="todas"||b.serie===bankSerie);
+  return `<h2>Banco de narrativas</h2>
+    <p class="note">Se o post do dia não fizer sentido, troque por um daqui. A troca aparece no calendário e dá para desfazer.</p>
+    <div class="filters" role="group" aria-label="Série">${series.map(s=>`<button type="button" data-bserie="${esc(s)}" aria-pressed="${bankSerie===s}">${s==="todas"?"Todas":esc(s)}</button>`).join("")}</div>
+    <div class="stack">${list.map(b=>`<details class="card">
+      <summary><div class="row"><span class="when">${esc(b.serie)}</span><span class="chip ${b.esf==="Ao vivo"?"A":b.esf==="15 min"?"T":"P"}">${esc(b.esf)}</span></div><div class="title" style="margin-bottom:0">${esc(b.t)}</div>${used[b.id]?`<div class="note">Usado no lugar de ${esc(used[b.id].n)} (${fmt(used[b.id].d)})</div>`:""}</summary>
+      <dl><div><dt>Primeira frase</dt><dd class="hook">${esc(b.h)}</dd></div><div><dt>Formato</dt><dd>${esc(b.f)}</dd></div><div><dt>Desenvolvimento</dt><dd>${esc(b.dev)}</dd></div><div><dt>Cenas</dt><dd>${esc(b.c)}</dd></div><div><dt>Pergunta final</dt><dd>${esc(b.q)}</dd></div></dl>
+      <div class="swapbox"><label class="note" for="sw-${b.id}">Usar no lugar de</label><select id="sw-${b.id}">${upcoming.map(i=>`<option value="${i.id}">${esc(i.n)} · ${fmt(i.d)} · ${esc(resolved(i).t.slice(0,38))}${resolved(i).t.length>38?"…":""}</option>`).join("")}</select><button class="btn" type="button" data-swap="${b.id}">Trocar</button></div>
+    </details>`).join("")}</div>`;
+}
+
+// Frases de Stories ligadas ao post do feed de cada dia.
+// m = manhã (antes do post) · c = chamada do post · i = interação · f = fecho da noite
+const STORYKIT = {
+ p01:{m:"Ontem foi um dia daqueles: noiva de manhã, São Paulo à tarde. Gravei tudo.",c:"Uma quinta comigo. Do café à volta pra casa.",i:["Caixinha","Como é uma quinta na sua vida?"],f:"Dia cheio, do jeito que eu gosto."},
+ p02:{m:"Hoje eu vou contar uma coisa que quase ninguém sabe: como eu comecei.",c:"Minha trajetória na maquiagem, do começo. Sem filtro.",i:["Caixinha","Você lembra da primeira vez que alguém te maquiou?"],f:"Obrigada por cada mensagem sobre o vídeo de hoje."},
+ p03:{m:"Tem uma escola de costura aqui na Ilha que muita gente não conhece. E ela é da minha mãe.",c:"Minha Ilha: a escola de costura da minha mãe.",i:["Enquete","Você sempre quis aprender a costurar? · Sim · Já sei"],f:"Quem quiser saber dias e horários, o contato está na legenda."},
+ p04:{m:"Hoje eu vou mostrar a minha pele bem de perto. Sem filtro.",c:"Pele tem textura. E está tudo bem.",i:["Enquete","Você usa filtro pra postar foto? · Sempre · Às vezes · Nunca"],f:"Pele real é pele bonita. Obrigada por cada resposta."},
+ c01:{m:"Bom dia! Hoje eu vou falar de uma coisa que muita gente acha que eu faço… e eu não faço.",c:"Saiu o vídeo. Eu tenho várias empresas e não dou conta de tudo. Gravei porque cansei de ver mulher se cobrando por isso.",i:["Caixinha","O que você ainda faz sozinha que já podia passar pra alguém?"],f:"Hoje eu deleguei uma coisa que antes eu fazia sozinha. Pequeno, mas conta."},
+ c02:{m:"Lembra da série “Porque eu não sei me maquiar”? Ela voltou.",c:"Parte 4: o blush. Não tem um lugar certo, tem o lugar certo pro seu rosto.",i:["Enquete","Onde você passa blush? · Na maçã · Mais alto · Não uso"],f:"Me fala qual dica você quer na parte 5."},
+ c03:{m:"Tem uma frase que resume muito do que eu quero falar aqui daqui pra frente.",c:"A pele mudou. A técnica precisa acompanhar. Vou mostrar isso na prática nas próximas semanas.",i:["Caixinha","O que mudou na sua pele que a sua maquiagem ainda não acompanhou?"],f:"Li todas as respostas. Muitas viram vídeo."},
+ c04:{m:"Tô com uma novidade que mexe com a minha vida inteira esse mês.",c:"Estamos começando nossa primeira operação em outro estado. Vou mostrar tudo por aqui.",i:["Contagem","Inauguração em São José dos Campos · 24/10"],f:"Diário de SJC, dia 1. Ainda não caiu a ficha."},
+ c05:{m:"Hoje é dia de pele madura. Prepara o caderninho.",c:"Três coisas que podem estar pesando a sua maquiagem sem você perceber.",i:["Quiz","Qual pesa mais? · Muito produto · Pó demais · Corrigir tudo"],f:"Amanhã respondo nos Stories quem errou no quiz."},
+ t01:{m:"Vou soltar uma opinião de maquiadora hoje. Já sei que vai ter gente discordando.",c:"Primer não é obrigatório pra todo mundo. Pronto, falei. Vem discutir nos comentários.",i:["Enquete","Você usa primer? · Sempre · Nunca · Depende"],f:"Teve muita gente defendendo o primer. Amei."},
+ c06:{m:"Sábado foi dia de Automake Class e eu saí com três erros na cabeça.",c:"Os 3 erros que mais apareceram em sala, e como corrigir cada um.",i:["Enquete","Você se viu em algum? · Sim, em todos · Em um · Em nenhum"],f:"Próxima turma? Me manda TURMA no direct."},
+ e01:{m:"Pouca gente sabe que tem uma coisa diferente acontecendo dentro do Espaço Handem.",c:"Tem uma escola de costura aqui na Ilha, dentro do Espaço Handem. Chama no WhatsApp pra saber dos horários.",i:["Enquete","Você sempre quis aprender a costurar? · Sim · Já costuro · Não"],f:"Quem respondeu sim, chama no direct que eu passo as informações."},
+ c07:{m:"Tem dia que eu tenho dez minutos pra ficar pronta. Hoje eu mostro o que eu faço.",c:"Minha maquiagem de 10 minutos, sem segredo.",i:["Quiz","Quanto tempo você tem de manhã? · 5 min · 10 min · 30 min"],f:"Se quiser a versão de 5 minutos, me fala."},
+ c08:{m:"Faltam 6 dias pra inauguração e eu tô sentindo coisa que não esperava.",c:"Postei uma foto e um texto que eu demorei pra escrever.",i:["Caixinha","Qual foi a coisa que te deu mais medo de começar?"],f:"Diário de SJC: hoje foi dia de montar."},
+ c09:{m:"Hoje eu quero te dizer uma coisa que muda o jeito de aprender maquiagem.",c:"Você não precisa aprender a fazer a minha maquiagem. Precisa entender o seu rosto.",i:["Caixinha","Qual parte do seu rosto nenhum tutorial resolve?"],f:"Essas respostas vão virar conteúdo."},
+ t02:{m:"Um comentário de vocês ficou na minha cabeça e eu respondi em vídeo.",c:"Respondi aquela dúvida. Tá lá no perfil.",i:["Caixinha","Manda outra dúvida que eu respondo em vídeo"],f:"Separei mais duas pra semana que vem."},
+ c10:{m:"Faltam três dias. Hoje eu mostro o que ninguém posta.",c:"O que ninguém vê antes de uma inauguração. Real, sem filtro.",i:["Enquete","Você já organizou algo grande? · Sim · Ainda não"],f:"Sábado é o dia. Vem acompanhar."},
+ c11:{m:"Tenho uma pergunta pra você hoje. Pensa com calma.",c:"Depois de adulta, onde a gente faz novas amigas? Falei sobre isso no vídeo de hoje.",i:["Enquete","Você sente falta de um grupo de mulheres? · Muito · Um pouco · Não"],f:"Por isso existe o Handem Club. Manda CLUB no direct pra entrar na lista."},
+ c12:{m:"Pele madura pode usar glow? Hoje eu respondo de vez.",c:"Pode, sim. Mostrei onde e como no vídeo de hoje.",i:["Caixinha","O que você deixou de usar por achar que não era mais pra você?"],f:"Amanhã mostro a inauguração. Ainda tô processando."},
+ c13:{m:"Ontem a gente abriu nossa primeira operação fora do Rio.",c:"Postei o mini-documentário. Foi um capítulo importante da minha história.",i:["Reação","Deixa um emoji pra equipe de SJC"],f:"Obrigada a cada pessoa que fez isso acontecer."},
+ t03:{m:"Hoje tem mais uma opinião de maquiadora. Essa vai dar o que falar.",c:"Ruga nunca foi o problema. Excesso de pó é.",i:["Enquete","Concorda? · Sim · Não · Depende"],f:"Quinta tem teatro. Vem comigo?"},
+ c14:{m:"Hoje é dia de falar de um livro que mudou minha forma de pensar hábito.",c:"A gente superestima motivação e subestima repetição. Falei sobre isso no vídeo.",i:["Caixinha","Qual hábito você está tentando tornar automático?"],f:"O meu: [conte o seu]."},
+ c15:{m:"Faltam dois dias pro Handem Club e a casa tá virando uma oficina de velas.",c:"Tudo que acontece antes de 20 mulheres chegarem aqui.",i:["Você decide","Qual essência vai na mesa? · opção A · opção B"],f:"Contagem pro Club: falta 1 dia."},
+ m01:{m:"Hoje eu vou te mostrar, em poucos slides, por que esse perfil existe.",c:"Uma maquiadora que fala de negócios? Essa é a ideia. Vai lá ver.",i:["Enquete","Por que você me segue? · Maquiagem · Negócios · Vida real · Club"],f:"Esse post vai ficar fixado no perfil."},
+ c17:{m:"Ainda tô com o sábado na cabeça.",c:"Postei o vídeo do Handem Club. Liga o som pra ouvir as risadas.",i:["Caixinha","Quem estava lá: o que você levou de sábado?"],f:"Manda CLUB no direct pra saber da próxima edição antes de todo mundo."},
+ t04:{m:"Fui ver se existe vida após o casamento. Spoiler: eu ri muito.",c:"Postei como foi a peça no Teatro da Ilha.",i:["Enquete","Você ia comigo? · Com certeza · Com o marido · Com as amigas"],f:"Que bom ter um teatro desse tamanho aqui na Ilha."},
+ c18:{m:"Tem um erro com corretivo que eu vejo toda semana.",c:"Quanto mais corretivo, mais a olheira aparece. Mostrei por quê.",i:["Enquete","Seu corretivo… · Marca · Some · Fica ok"],f:"Sexta tem novidade do Club."},
+ c19:{m:"Hoje eu tenho uma coisa importante pra quem pediu a próxima edição do Club.",c:"Isso nunca foi só sobre fazer velas. Comenta CLUB no post pra entrar na lista.",i:["Link","Assinatura do Handem Club: primeiro para a lista Amigas do Club"],f:"Lista Amigas do Club: vocês recebem tudo antes."},
+ c20:{m:"Hoje tem parte 5 de “Porque eu não sei me maquiar”.",c:"Parte 5: o corretivo não precisa ocupar metade do rosto.",i:["Caixinha","Qual dica você quer na parte 6?"],f:"A parte 6 vai sair da resposta mais pedida."},
+ c21:{m:"Hoje eu te levo comigo num dia de noiva.",c:"Vem comigo maquiar uma noiva. Do começo ao espelho.",i:["Reação","Quem aqui é noiva ou vai casar? (eu! 💍)"],f:"Contei como eu escolho cada detalhe da maquiagem de noiva. Domingo eu mostro."},
+ t05:{m:"Hoje é dia de Certo ou errado.",c:"Corretivo: A ou B? Só um deles não marca. Vota nos comentários.",i:["Enquete","A ou B?"],f:"Sexta eu revelo a resposta."},
+ c22:{m:"Tem coisa que eu fazia em toda pele e parei.",c:"Coisas que parei de fazer depois de atender mais peles maduras.",i:["Enquete","Você ainda faz alguma? · Sim · Não"],f:"Comenta PELE no post que eu te mando meu checklist."},
+ c23:{m:"Hoje o vídeo é mais pessoal.",c:"Eu não quero voltar a ser quem eu era. E tá tudo bem.",i:["Caixinha","O que você gosta mais em você hoje?"],f:"Li cada resposta. Obrigada por dividirem isso comigo."},
+ c24:{m:"Antes de abrir qualquer produto numa noiva, eu olho sete coisas.",c:"O que eu observo antes de começar uma maquiagem de noiva.",i:["Caixinha","Noivas: o que mais te preocupa na maquiagem do dia?"],f:"Agenda de noivas: @handemmakeup."},
+ c25:{m:"A primeira coisa que muda numa aula não é a maquiagem.",c:"O que eu mais percebo quando uma mulher começa a aprender a se maquiar.",i:["Caixinha","O que te impede de aprender a se maquiar?"],f:"Próxima turma? Me manda TURMA no direct."},
+ t06:{m:"Fiz uma pergunta pras mulheres do Club e as respostas me pegaram.",c:"O que você faz só por você? Elas responderam. Agora é sua vez.",i:["Caixinha","O que você faz só por você?"],f:"Manda CLUB no direct pra entrar na lista."},
+ c26:{m:"Hoje o vídeo é pra maquiadoras.",c:"Se você trava quando senta uma cliente de pele madura na sua cadeira, esse é pra você.",i:["Caixinha","Maquiadoras: o que mais te dá insegurança na pele madura?"],f:"Comenta PELE no post que eu te mando meu checklist."},
+ c27:{m:"Essa turma começou há três semanas. Olha o que já mudou.",c:"Primeiras semanas de uma turma de maquiadoras.",i:["Caixinha","Maquiadoras: o que você queria ter aprendido no começo?"],f:"Próxima turma profissional? Me chama no direct."},
+ c28:{m:"Teve uma coisa que eu só entendi liderando gente.",c:"Uma coisa que percebi liderando meu time.",i:["Caixinha","O que foi mais difícil de soltar na sua rotina?"],f:"Meu time é o motivo de eu conseguir estar aqui."},
+ c29:{m:"Hoje eu vou falar de ambição. Sem vergonha.",c:"Eu gosto de crescer. E demorei pra falar isso em voz alta.",i:["Enquete","Mulher ainda precisa diminuir a ambição? · Sim · Não"],f:"Um mês atrás eu tava abrindo SJC. Hoje olho pra trás e sorrio."},
+ t07:{m:"Certo ou errado de novo, agora com sobrancelha.",c:"Sobrancelha: A ou B? A diferença é 2 milímetros.",i:["Enquete","A ou B?"],f:"Sexta eu revelo."},
+ c30:{m:"Tem uma frase que resume como eu ensino.",c:"Beleza também é autonomia.",i:["Caixinha","O que você aprendeu a fazer sozinha esse ano?"],f:"Sexta tem um vídeo que fecha esse mês."},
+ c31:{m:"Esse mês eu estive com muitas mulheres diferentes.",c:"O que esse mês me lembrou sobre mulheres.",i:["Caixinha","Qual mulher te lembrou de algo importante esse mês?"],f:"Obrigada por acompanharem esse ciclo comigo."},
+ c16:{m:"Tem uma frase que eu escuto na cadeira quase toda semana.",c:"Uma coisa que anos maquiando mulheres me ensinaram sobre autoestima.",i:["Caixinha","Qual frase sobre você mesma você já repetiu tanto que virou verdade?"],f:"Semana que vem começa um ciclo novo."}
+};
+// Dias sem post: frases por situação
+const DAYKIT = {
+ "2026-10-06":{t:"Dia de gravação",m:"Hoje é dia de gravação. Separei três looks. Vamos ver no que dá.",i:["Enquete","Qual vocês querem ver primeiro? · Automaquiagem · Pele madura"],f:"Gravei 7 vídeos hoje. Agora é editar."},
+ "2026-10-08":{t:"Respostas da semana",m:"A série “Porque eu não sei me maquiar” voltou e chegou muita resposta. Separei algumas.",i:["Caixinha","Manda sua dúvida de automaquiagem"],f:"Sexta tem uma frase que eu quero que você leia."},
+ "2026-10-10":{t:"Automake Class 2.0 · ao vivo",m:"Hoje é dia de Automake Class 2.0. Vem ver como é.",i:["Enquete","Você faria uma aula de automaquiagem? · Sim · Já fiz"],f:"Turma linda. Terça eu conto os erros que mais apareceram."},
+ "2026-10-17":{t:"Sábado",m:"Diário de SJC: faltam 7 dias.",i:["Você decide","Qual look pra inauguração? · A · B"],f:"Amanhã tem noiva."},
+ "2026-10-22":{t:"Véspera da véspera",m:"Diário de SJC: faltam 2 dias. Malas quase prontas.",i:["Caixinha","Manda uma palavra pra equipe de SJC"],f:"Amanhã a gente viaja."},
+ "2026-10-24":{t:"Inauguração SJC · ao vivo",m:"Hoje é o dia. São José dos Campos, 17h.",i:["Reação","Torce com a gente"],f:"Acho que só agora caiu a ficha."},
+ "2026-10-29":{t:"Teatro da Ilha · ao vivo",m:"Hoje às 20h tem “Existe vida após o casamento” no Teatro da Ilha. Te encontro lá?",i:["Link","Ingressos: jonathannemer.com.br"],f:"Ri muito. Terça eu mostro como foi."},
+ "2026-10-31":{t:"Handem Club · ao vivo",m:"Hoje é dia de Handem Club. Oficina de Velas às 14h.",i:["Reação","Manda um coração pra quem está chegando"],f:"Que tarde. Segunda eu mostro tudo."},
+ "2026-11-05":{t:"Respostas da semana",m:"Muita gente respondeu sobre corretivo. Separei algumas respostas.",i:["Caixinha","Manda sua dúvida de pele"],f:"Amanhã tem novidade do Club."},
+ "2026-11-07":{t:"Sábado",m:"Sábado de trabalho. Mostrando um pouco da rotina.",i:["Você decide","Domingo: automaquiagem parte 2 ou pele madura?"],f:"Segunda tem dia de noiva no feed."},
+ "2026-11-12":{t:"Respostas da semana",m:"O vídeo de pele madura rendeu muitas mensagens. Respondendo algumas.",i:["Caixinha","Manda sua dúvida de pele madura"],f:"Amanhã o vídeo é mais pessoal."},
+ "2026-11-14":{t:"Sábado",m:"Sábado com a agenda cheia. Bastidor do dia.",i:["Enquete","Noivas: vocês querem mais conteúdo de noiva? · Sim · Não"],f:"Amanhã conto o que eu observo antes de uma noiva."},
+ "2026-11-19":{t:"Respostas da semana",m:"Maquiadoras mandaram muita coisa sobre pele madura. Separei algumas.",i:["Caixinha","Maquiadoras: mandem a dúvida de vocês"],f:"Amanhã tem turma no feed."},
+ "2026-11-21":{t:"Sábado",m:"Sábado: bastidor da semana.",i:["Você decide","Próximo Club: atividade A ou B?"],f:"Amanhã falo de liderança."},
+ "2026-11-26":{t:"Respostas da semana",m:"A capa de ontem gerou muita conversa. Separei algumas respostas.",i:["Caixinha","O que você aprendeu a fazer sozinha?"],f:"Amanhã fecha o ciclo."},
+ "2026-11-28":{t:"Sábado",m:"Último sábado do ciclo. Bastidor do mês.",i:["Enquete","O que você quer ver mais em dezembro? · Maquiagem · Club · Negócios · Casamento"],f:"Amanhã o último vídeo do ciclo."}
+};
+
+const CAPTURE = ["Ambiente vazio, antes de tudo","Preparação e montagem","Suas mãos trabalhando","Você em ação, filmada por outra pessoa","Equipe","Detalhes (mesa, produto, decoração)","Pessoas chegando","Reações","Movimento (caminhada, porta abrindo)","Uma fala sua antes","Uma fala sua depois","Áudio natural: risadas e conversas","Resultado final","Autorização de imagem de clientes e alunas"];
+
+const STATUS = ["A fazer","Gravado","Editando","Pronto","Publicado"];
+const byId = Object.fromEntries(ITEMS.map(i=>[i.id,i]));
+const state = {}; // id -> status index
+const ideas = []; // {id,texto,criada}
+let local = false, view = "hoje", filter = "todos";
+
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const DOW = ["dom","seg","ter","qua","qui","sex","sáb"];
+const DOWL = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
+const MON = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const parse = s=>{const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)};
+const fmt = s=>{const x=parse(s);return `${DOW[x.getDay()]} ${x.getDate()}/${x.getMonth()+1}`};
+const todayStr = ()=>{const t=new Date();return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,"0")}-${String(t.getDate()).padStart(2,"0")}`};
+const kindChip = i=> i.top ? `<span class="chip T">Minha Ilha</span>` : i.k==="A" ? `<span class="chip A">Ao vivo</span>` : `<span class="chip P">Planejado</span>`;
+const st = id=> state[id] ?? 0;
+const todoLabel = i=> i.k==="A" ? "Para captar" : "Para gravar";
+
+function statusSelect(i){
+  const v = st(i.id);
+  return `<select class="s${v}" data-st="${i.id}" aria-label="Status de ${esc(i.n)}">${STATUS.map((s,k)=>`<option value="${k}"${k===v?" selected":""}>${k===0?todoLabel(i):s}</option>`).join("")}</select>`;
+}
+function card(i0,opts={}){
+  const i=resolved(i0);
+  return `<article class="card${opts.feature?" feature":""}"${opts.feature?"":` id="c-${i.id}"`}>
+    <div class="row"><span class="when">${esc(i.n)} · ${fmt(i.d)} · 10h</span>${statusSelect(i)}</div>
+    ${i.swapped?`<div class="swapped-note">Trocado · original: ${esc(i.orig)} <button class="btn ghost" type="button" data-unswap="${i.id}">desfazer</button></div>`:""}
+    <div class="title">${esc(i.t)}</div>
+    <div class="meta">${kindChip(i)}<span class="chip">${esc(i.p)}</span><span class="chip">${esc(i.f)}</span>${i.tr?`<span class="chip tr">Tráfego · R$ ${i.trv}</span>`:""}</div>
+    <details${opts.open?" open":""}><summary>Roteiro</summary>
+      <dl>
+        <div><dt>Hook</dt><dd class="hook">${esc(i.h)}</dd></div>
+        <div><dt>Objetivo</dt><dd>${esc(i.o)}</dd></div>
+        <div><dt>Desenvolvimento</dt><dd>${esc(i.dev)}</dd></div>
+        <div><dt>Cenas</dt><dd>${esc(i.c)}</dd></div>
+        <div><dt>Pergunta final</dt><dd>${esc(i.q)}</dd></div>
+        ${i.x?`<div><dt>Extra</dt><dd>${esc(i.x)}</dd></div>`:""}
+        ${i.tr?`<div><dt>Tráfego (${esc(i.trk)})</dt><dd>${esc(i.tr)}</dd></div>`:""}
+      </dl>
+    </details>
+  </article>`;
+}
+
+const PERFIL = [{"key": "perfil", "t": "Arrumar o perfil", "sub": "Esta semana, cerca de 1 hora. É o que a pessoa vê nos primeiros 5 segundos.", "it": [{"id": "nome", "t": "Trocar o nome do perfil", "s": "Editar perfil › Nome (máximo 30 caracteres). Esse campo aparece na busca.", "copy": "Isabella Handem · Club na Ilha"}, {"id": "bio", "t": "Trocar a bio", "s": "Editar perfil › Bio. Cabe nos 150 caracteres.", "copy": "Te ajudo a enxergar sua beleza e potencial.\nMaquiagem • Cursos • Handem Club na Ilha 🤍\nFounder @espacohandem\nClientes @handemmakeup"}, {"id": "link1", "t": "Subir a página de links e colocar como Link 1", "s": "Novo repositório “links” no GitHub com o index.html e a sua foto (foto.jpg). Preencha WhatsApp e Kiwify no topo do arquivo. Título do link: Club, curso e mais."}, {"id": "link2", "t": "Apagar os outros links da bio", "s": "Fica só a página de links. Quando um encontro do Club passar, apague a linha dele no topo do arquivo."}, {"id": "fix1", "t": "Fixar o melhor post de Club que você já tem", "s": "No post › ••• › Fixar no perfil. Fica até sair o #8 em 2/11."}, {"id": "fix2", "t": "Fixar o seu melhor tutorial e pôr o curso na legenda", "s": "Edite a legenda e cole a frase do curso no fim.", "copy": "Quer aprender a fazer isso no seu rosto? Meu Método Automake 21 dias custa R$ 47 e tem 2 encontros ao vivo comigo por mês. Link na bio."}, {"id": "dclub", "t": "Atualizar o destaque “Clube”", "s": "Manter: Reel “Oiê, eu sou a Isa”, “como garantir minha participação?” e “Inclui o material?”. Trocar o story de preços (falta a boas-vindas R$ 59,90). Novos: como funciona; primeira vez R$ 59,90 em 25 ou 28/11; posso ir sozinha?; traga uma amiga; link para o site do Club. Depois de 31/10: 2 ou 3 fotos reais da oficina."}, {"id": "ddep", "d": "2026-11-30", "t": "Criar o destaque “Depoimentos”", "s": "Depois da segunda oficina. Pedir depoimento em vídeo curto ou print de mensagem."}, {"id": "dcurso", "t": "Destaque “Curso”", "s": "Antes e depois de alunas, o que tem no curso, preço e link."}, {"id": "dilha", "t": "Destaque “Minha Ilha”", "s": "Stories com localização da Ilha. Vai enchendo com os posts do Minha Ilha."}, {"id": "darq", "t": "Arquivar os destaques antigos de atendimento", "s": "Sem aviso. Só tirar do perfil."}, {"id": "local", "t": "Conferir o local “Espaço Handem” no Instagram", "s": "Busque em Locais. Se não existir, crie marcando o endereço; se tiver duplicado, use sempre o mesmo."}]}, {"key": "perfil-nov", "t": "Trocas de fixados", "sub": "Quando os posts novos saírem.", "it": [{"id": "fix8", "d": "2026-11-02", "t": "Fixar o #8 do Club no lugar do post antigo de Club"}, {"id": "fix14", "d": "2026-11-16", "t": "Fixar o #14 “Eu vim sozinha”"}]}, {"key": "alcance", "t": "Alcançar as mulheres da Ilha", "sub": "Tráfego e collabs, na data certa.", "it": [{"id": "tzap", "d": "2026-10-16", "t": "Turma: mandar no WhatsApp para quem já perguntou de curso", "s": "Ex-clientes, alunas do Automake, quem pediu indicação. Uma mensagem pessoal, não lista de transmissão.", "copy": "Oi, [nome]! Lembrei de você: dia 26/10 começa a minha turma Maquiador Profissional Iniciante, para quem está começando do zero. Às segundas, das 14h às 18h, por 3 meses, R$ 270 por mês. Restam 5 vagas. Quer que eu te conte como funciona?"}, {"id": "tads", "d": "2026-10-19", "t": "Turma: tráfego no Reel da trajetória (#2)", "s": "R$ 20 por dia até 25/10 · objetivo: mensagens no WhatsApp · mulheres de 18 a 45 · raio de 8 km do Espaço."}, {"id": "tstories", "d": "2026-10-19", "t": "Turma: 1 story por dia até 25/10 com contagem regressiva", "s": "Figurinha de contagem para 26/10 + “restam X vagas”. Mostre a sala, o material, uma aluna de turma anterior."}, {"id": "tdecide", "d": "2026-10-23", "t": "Turma: decidir com quantas alunas começar", "s": "Se até 23/10 tiver menos de 3 inscritas, decida: começar assim ou adiar para 9/11 e continuar divulgando. A decisão é sua."}, {"id": "dm1", "d": "2026-10-20", "t": "Mandar a proposta de collab para @dicas_ilhadogovernador", "s": "No direct.", "copy": "Oi! Sou a Isabella Handem, maquiadora aqui da Ilha. Todo mês faço o Handem Club, um encontro só de mulheres em que cada uma leva pra casa algo que fez. Topa um Reel em collab do próximo encontro? Posso convidar alguém da página pra participar."}, {"id": "dm2", "d": "2026-10-20", "t": "Mandar a mesma proposta para @ilhadogovernador", "copy": "Oi! Sou a Isabella Handem, maquiadora aqui da Ilha. Todo mês faço o Handem Club, um encontro só de mulheres em que cada uma leva pra casa algo que fez. Topa um Reel em collab do próximo encontro? Posso convidar alguém da página pra participar."}, {"id": "tcost", "d": "2026-10-21", "t": "Tráfego da escola de costura (#3)", "s": "7 dias · objetivo: mensagens no WhatsApp · mulheres de 25 a 60 · raio de 5 a 8 km do Espaço."}, {"id": "amiga31", "d": "2026-10-31", "t": "No Club de 31/10, falar do “traga uma amiga”", "s": "Amiga paga 50% na primeira experiência (R$ 39,90). Quem trouxe ganha 50% no mês seguinte se a amiga assinar."}, {"id": "tclub", "d": "2026-11-02", "t": "Tráfego do Club com o vídeo do #8", "s": "R$ 20 por dia por 14 dias (R$ 280) · objetivo: mensagens · mulheres de 30 a 60 · raio de 6 km do Espaço · destino: boas-vindas R$ 59,90 em 25 ou 28/11."}, {"id": "tcurso", "t": "Tráfego do curso", "s": "Só quando um tutorial passar de 600 views: R$ 50 a R$ 100 nele."}, {"id": "bairro", "t": "Em toda conversa “CLUB”, perguntar o bairro", "s": "Anote no Banco de ideias. Em 2 meses você sabe de onde vêm as suas mulheres."}, {"id": "amiga25", "d": "2026-11-25", "t": "Nos Clubs de 25 e 28/11, falar do “traga uma amiga” de novo"}]}];
+const SEMANA = ["Quantas mandaram “CLUB” no direct, e de qual bairro", "Quantas assinantes no Club (meta: 10 até 30/11)", "Quantas vendas do curso na Kiwify", "Seguidores ganhos menos perdidos (Metricool)"];
+const REGRAS = ["Localização: Espaço Handem ou o bairro, nunca “Rio de Janeiro”", "Primeira linha da legenda com “Ilha do Governador”", "Nome do lugar na tela nos 2 primeiros segundos", "Collab com o parceiro sempre que tiver um"];
+const pfOpen = new Set(["perfil"]);
+function mondayOf(s){ const x=parse(s); const k=(x.getDay()+6)%7; x.setDate(x.getDate()-k); return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,"0")}-${String(x.getDate()).padStart(2,"0")}` }
+function pfAll(){ return PERFIL.flatMap(g=>g.it.map(i=>({g,i}))) }
+function perfilSection(){
+  const t=todayStr();
+  const all=pfAll(), feitos=all.filter(({g,i})=>ck(g.key).includes(i.id)).length;
+  const prox=all.filter(({g,i})=>!ck(g.key).includes(i.id) && i.d && i.d<=addDays(t,3)).sort((a,b)=>a.i.d<b.i.d?-1:1);
+  const wk="semana-"+mondayOf(t), wd=ck(wk);
+  const item=(g,i,px="pf")=>{ const on=ck(g.key).includes(i.id), late=!on&&i.d&&i.d<t;
+    return `<div class="check${on?" done":""}"><input type="checkbox" id="${px}-${g.key}-${i.id}" data-pf="${i.id}" data-pfk="${g.key}"${on?" checked":""}>
+    <label for="${px}-${g.key}-${i.id}">${i.d?`<span class="when" style="display:block${late?";color:var(--berry)":""}">${fmt(i.d)}${late?" · atrasado":""}</span>`:""}${esc(i.t)}${i.s?`<span class="sub">${esc(i.s)}</span>`:""}
+    ${i.copy?`<span class="copybox">${esc(i.copy)}</span><button class="btn ghost" type="button" data-copy="${g.key}|${i.id}" style="margin-top:6px">Copiar</button>`:""}</label></div>` };
+  return `<h3>Perfil e alcance · ${feitos}/${all.length}</h3>
+    <div class="progress" aria-hidden="true"><span style="width:${Math.round(feitos/all.length*100)}%"></span></div>
+    ${prox.length?`<div class="card feature" style="margin-top:10px"><span class="when">Para fazer agora</span>${prox.map(({g,i})=>item(g,i,"now")).join("")}</div>`:""}
+    ${(()=>{const dated=all.filter(({i})=>i.d).sort((a,b)=>a.i.d<b.i.d?-1:1);const n=dated.filter(({g,i})=>ck(g.key).includes(i.id)).length;return `<details class="card" data-pfg="datas" style="margin-top:10px"${pfOpen.has("datas")?" open":""}><summary>Por data · ${n}/${dated.length}</summary><p class="note" style="margin:6px 0 4px">Tudo que tem dia certo, em ordem.</p>${dated.map(({g,i})=>item(g,i,"dt")).join("")}</details>`})()}
+    ${PERFIL.map(g=>{const und=g.it.filter(i=>!i.d); if(!und.length) return ""; const n=und.filter(i=>ck(g.key).includes(i.id)).length; const open=pfOpen.has(g.key);
+      return `<details class="card" data-pfg="${g.key}" style="margin-top:10px"${open?" open":""}><summary>${esc(g.key==="alcance"?"Alcance · sem data fixa":g.t)} · ${n}/${und.length}</summary><p class="note" style="margin:6px 0 4px">${esc(g.key==="alcance"?"Vale para todo o ciclo.":g.sub)}</p>${und.map(i=>item(g,i)).join("")}</details>`}).join("")}
+    <details class="card" data-pfg="semana" style="margin-top:10px"${pfOpen.has("semana")?" open":""}><summary>Números da semana · ${wd.length}/${SEMANA.length}</summary><p class="note" style="margin:6px 0 4px">Toda segunda, 5 minutos. Zera sozinho na semana seguinte.</p>
+      ${SEMANA.map((s,k)=>`<div class="check${wd.includes(String(k))?" done":""}"><input type="checkbox" id="sm-${k}" data-pf="${k}" data-pfk="${wk}"${wd.includes(String(k))?" checked":""}><label for="sm-${k}">${esc(s)}</label></div>`).join("")}</details>
+    <details class="card" data-pfg="regras" style="margin-top:10px"${pfOpen.has("regras")?" open":""}><summary>Em todo post</summary><ul class="plain" style="margin:8px 0 0">${REGRAS.map(r=>`<li>${esc(r)}</li>`).join("")}</ul></details>`;
+}
+function findCopy(key,id){ const g=PERFIL.find(x=>x.key===key); const i=g&&g.it.find(x=>x.id===id); return i?i.copy:"" }
+function renderHoje(){
+  const t = todayStr(), td = parse(t);
+  const upcoming = ITEMS.filter(i=>i.d>=t && st(i.id)<4);
+  const next = upcoming[0];
+  const weekEnd = new Date(td); weekEnd.setDate(td.getDate()+7);
+  const wk = upcoming.slice(1).filter(i=>parse(i.d)<weekEnd);
+  const sess = SESSIONS.find(s=>s.d>=t);
+  const live = ITEMS.filter(i=>i.k==="A" && st(i.id)===0 && i.d>=t).slice(0,3);
+  const rit = RITUALS[td.getDay()];
+  const tea = TEATRO.find(([d])=>d===t);
+  const capToday = CAPDAYS.find(c=>c.d===t);
+  const ag = AGENDA.filter(([d])=>d>=t).slice(0,3);
+  const total = ITEMS.length, pub = ITEMS.filter(i=>st(i.id)===4).length, ready = ITEMS.filter(i=>st(i.id)>=3).length;
+  const late = ITEMS.filter(i=>i.d<t && st(i.id)<4).length;
+  const sessIts = sess ? sess.it.map(id=>byId[id]) : [];
+  const sessDone = sessIts.filter(i=>st(i.id)>=1).length;
+  $("#v-hoje").innerHTML = `
+    <div class="when" style="margin-top:6px">${DOWL[td.getDay()]}, ${td.getDate()} de ${MON[td.getMonth()]}</div>
+    ${capToday?`<div class="card feature" style="margin-top:12px"><span class="when">Hoje é dia de captação</span><div class="title">${esc(capToday.t)}</div><div class="note" style="color:var(--ink)">${esc(TEMPLATES[capToday.tipo].abertura)}</div><button class="btn" type="button" data-gocap="${capToday.id}" style="margin-top:10px">Abrir checklist de quem filma</button></div>`:""}
+    <div class="nums">
+      <div class="num"><b>${pub}/${total}</b><span>publicados</span></div>
+      <div class="num"><b>${ready}</b><span>prontos ou no ar</span></div>
+      <div class="num"><b>${late}</b><span>atrasados</span></div>
+    </div>
+    <div class="progress" aria-hidden="true"><span style="width:${Math.round(pub/total*100)}%"></span></div>
+    ${perfilSection()}
+    <h3>Próximo post</h3>
+    ${next ? card(next,{feature:true}) : `<div class="empty">Ciclo concluído. Hora de planejar dezembro.</div>`}
+    ${wk.length?`<h3>Nos próximos 7 dias</h3><div class="stack">${wk.map(i=>card(i)).join("")}</div>`:""}
+    <h3>Próxima gravação</h3>
+    ${sess?`<div class="card">
+      <div class="row"><span class="when">${fmt(sess.d)} · ${esc(sess.dur)}</span><span class="chip">${sessDone}/${sessIts.length} gravados</span></div>
+      <div class="title">${esc(sess.l)}</div>
+      ${sessIts.length?`<ul class="plain">${sessIts.map(i=>`<li>${esc(i.n)} — ${esc(i.t)} <span class="note">(post ${fmt(i.d)})</span></li>`).join("")}</ul>`:""}
+      <p class="note" style="margin:8px 0 0">${esc(sess.need)}</p>
+    </div>`:`<div class="empty">Nenhuma gravação marcada.</div>`}
+    ${ag.length?`<h3>Agenda</h3><div class="card">${ag.map(([d,e])=>`<div class="check" style="align-items:baseline"><span class="when" style="min-width:64px">${fmt(d)}</span><span>${esc(e)}</span></div>`).join("")}</div>`:""}
+    ${tea?`<h3>Combinado com o Teatro da Ilha</h3><div class="card feature"><span class="when">Story de hoje</span><div class="title" style="margin-bottom:0">${esc(tea[1])}</div></div>`:""}
+    <h3>Stories de hoje</h3>
+    <div class="card">${(()=>{const ss=storySteps(t<CICLO_INICIO?CICLO_INICIO:t);return ss.slice(0,2).map(x=>`<span class="when">${esc(x.h)} · ${esc(x.t)}</span><div class="story"><span class="phrase">${x.plain?esc(x.f):"“"+esc(x.f)+"”"}</span></div>`).join('<div style="height:10px"></div>')})()}<button class="btn ghost" type="button" onclick="document.querySelector('nav.tabs button[data-v=stories]').click()" style="margin-top:8px;padding-left:0">Ver a sequência completa ›</button></div>
+    ${live.length?`<h3>Para captar ao vivo</h3><div class="stack">${live.map(i=>`<div class="card"><span class="when">${esc(i.n)} · post ${fmt(i.d)}</span><div class="title" style="margin-bottom:4px">${esc(i.t)}</div><div class="note">${esc(i.c)}</div></div>`).join("")}</div>`:""}
+    <h3>Usar como app</h3>
+    <p class="note">No iPhone, abra esta página no Safari, toque em Compartilhar e depois em “Adicionar à Tela de Início”. No Android, use o menu do Chrome e “Adicionar à tela inicial”.</p>`;
+}
+
+function renderCal(){
+  const fs = [["todos","Todos"],["P","Planejados"],["A","Ao vivo"],["T","Minha Ilha"],["pend","Pendentes"]];
+  let list = ITEMS.filter(i=> filter==="todos" || (filter==="T"? i.top : filter==="pend"? st(i.id)<4 : (i.k===filter && !i.top) ));
+  const groups = {};
+  list.forEach(i=>{const x=parse(i.d);const m=new Date(x);m.setDate(x.getDate()-((x.getDay()+6)%7));const k=`${m.getDate()}/${m.getMonth()+1}`;(groups[k]=groups[k]||[]).push(i)});
+  $("#v-cal").innerHTML = `<h2>Calendário · 16/10 a 30/11</h2>
+    <div class="filters" role="group" aria-label="Filtro">${fs.map(([k,l])=>`<button data-f="${k}" aria-pressed="${filter===k}">${l}</button>`).join("")}</div>
+    <details class="card" data-pfg="trafego"${pfOpen.has("trafego")?" open":""}><summary>Tráfego recomendado · R$ ${ITEMS.filter(i=>i.tr).reduce((a,i)=>a+i.trv,0)} no ciclo</summary>
+      <p class="note" style="margin:6px 0 6px">Turma e Club têm data, então o anúncio roda de qualquer jeito. Os de topo de funil só recebem verba se, em 24h, passarem da sua média de views.</p>
+      ${ITEMS.filter(i=>i.tr).map(i=>`<a class="arow" href="#c-${i.id}"><span class="ad">${fmt(i.d)}</span><span class="at">${esc(i.n)} ${esc(resolved(i).t)} <span class="note">· ${esc(i.trk)}</span></span><span class="as">R$ ${i.trv}</span></a>`).join("")}
+    </details>
+    <details class="card agenda-list" data-pfg="agenda"${pfOpen.has("agenda")?"":" open"}><summary>Datas de postagem · ${list.length} posts</summary>
+      <div style="margin-top:8px">${list.map(i0=>{const i=resolved(i0);const on=st(i.id)===4;const past=i.d<todayStr()&&!on;return `<a class="arow${on?" on":""}" href="#c-${i.id}"><span class="ad"${past?' style="color:var(--berry)"':""}>${fmt(i.d)}</span><span class="at">${esc(i.n)} ${esc(i.t)}</span><span class="as">${i.tr?"<b class=\"trb\">R$</b> ":""}${on?"no ar":(i.k==="A"?"captar":"gravar")}</span></a>`}).join("")}</div>
+    </details>
+    ${Object.keys(groups).length? Object.entries(groups).map(([k,its])=>`<div class="week"><span>Semana de ${k}</span><span>${its.filter(i=>st(i.id)===4).length}/${its.length} no ar</span></div><div class="stack">${its.map(i=>card(i)).join("")}</div>`).join("") : `<div class="empty">Nada neste filtro.</div>`}`;
+}
+
+const BLOCOS = [
+  {k:1,t:"Aulas (um look só)",d:"Pele feita, luz fixa. Grave todas as aulas em sequência, trocando só a blusa entre elas."},
+  {k:2,t:"Falados",d:"Não decore: primeira frase, 3 pontos e a pergunta final."},
+  {k:3,t:"Minha Ilha (no local)",d:"Grave no lugar: fachada, pessoas, detalhes e a sua fala no fim."}
+];
+const grp = i => i.top ? 3 : (/Mulheres|Vida real|Autoral/.test(i.p) ? 2 : 1);
+let openSess = null;
+function videoCard(i0){
+  const i=resolved(i0);
+  const done = st(i.id)>=1;
+  return `<div class="card rec${done?" done-card":""}">
+    <div class="check" style="border:0;padding:0"><input type="checkbox" id="r-${i.id}" data-rec="${i.id}"${done?" checked":""}><label for="r-${i.id}"><b>${esc(i.n)} — ${esc(i.t)}</b><span class="sub">post ${fmt(i.d)} · ${esc(i.f)}</span></label></div>
+    <dl>
+      <div><dt>Primeira frase</dt><dd class="hook">${esc(i.h)}</dd></div>
+      <div><dt>Pontos</dt><dd>${esc(i.dev)}</dd></div>
+      <div><dt>Cenas</dt><dd>${esc(i.c)}</dd></div>
+      <div><dt>Pergunta final</dt><dd>${esc(i.q)}</dd></div>
+      ${i.x?`<div><dt>Extra</dt><dd>${esc(i.x)}</dd></div>`:""}
+    </dl>
+  </div>`;
+}
+
+function capKeys(c){const T=TEMPLATES[c.tipo];return [...T.antes.map((_,k)=>"a"+k),...T.durante.map((_,k)=>"d"+k),...T.final.map((_,k)=>"f"+k),...c.extra.map((_,k)=>"x"+k)]}
+function capDone(id){return ck("cap-"+id)}
+function setCap(id,k,on){setCk("cap-"+id,k,on)}
+let openCap=null;
+function capSection(){
+  const t=todayStr(); const next=CAPDAYS.find(c=>c.d>=t);
+  if(openCap===null && next) openCap=next.id;
+  const group=(c,title,list,p)=>{const dn=capDone(c.id);return list.length?`<h3>${title}</h3>${list.map((x,k)=>{const key=p+k;return `<div class="check${dn.includes(key)?" done":""}"><input type="checkbox" id="cp-${c.id}-${key}" data-cap="${c.id}" data-k="${key}"${dn.includes(key)?" checked":""}><label for="cp-${c.id}-${key}">${esc(x)}</label></div>`}).join("")}`:""};
+  return `<h2 id="aoVivo">Dias ao vivo</h2>
+    <p class="note">Checklist para quem estiver filmando com você. ${esc(CAPRULES)}</p>
+    <div class="stack">${CAPDAYS.map(c=>{const T=TEMPLATES[c.tipo];const dn=capDone(c.id);const total=capKeys(c).length;const isNext=next&&next.id===c.id;
+      return `<details class="card sess${isNext?" feature":""}"${c.id===openCap?" open":""} data-capday="${c.id}"${c.d<t&&!isNext?' style="opacity:.7"':""}>
+        <summary><div class="row"><span class="when">${isNext?"Próximo · ":""}${fmt(c.d)}</span><span class="chip">${dn.length}/${total}</span></div>
+        <div class="title" style="margin-bottom:2px">${esc(c.t)}</div><div class="note">Alimenta: ${esc(c.feeds)}</div></summary>
+        <div class="sess-body">
+          <div class="callout"><b>Antes de tudo:</b> ${esc(T.abertura)}</div>
+          ${group(c,"Antes",T.antes,"a")}
+          ${group(c,"Durante · momentos para caçar",T.durante,"d")}
+          ${group(c,"No final",T.final,"f")}
+          ${T.perguntas.length?`<p class="note" style="margin:8px 0 0"><b>Perguntas do depoimento:</b> ${T.perguntas.map(esc).join(" · ")}</p>`:""}
+          ${group(c,"Específico deste dia",c.extra,"x")}
+          ${T.cuidado?`<p class="note" style="margin:10px 0 0"><b>Cuidado:</b> ${esc(T.cuidado)}</p>`:""}
+        </div>
+      </details>`}).join("")}</div>`;
+}
+
+function renderGrav(){
+  const t = todayStr();
+  const next = SESSIONS.find(s=>s.d>=t);
+  if(openSess===null && next) openSess = next.id;
+  $("#v-grav").innerHTML = `<h2>Dia de gravação</h2>
+    <p class="note">Abra a sessão do dia e grave de cima para baixo. Marcou, o calendário já mostra como Gravado.</p>
+    <div class="stack">${SESSIONS.map(s=>{
+      const its = s.it.map(id=>byId[id]).sort((a,b)=>grp(a)-grp(b)||a.d.localeCompare(b.d));
+      const done = its.filter(i=>st(i.id)>=1).length;
+      const past = s.d < t, isNext = next && s.id===next.id;
+      const blocos = BLOCOS.map(b=>({b,list:its.filter(i=>grp(i)===b.k)})).filter(x=>x.list.length);
+      return `<details class="card sess${isNext?" feature":""}"${s.id===openSess?" open":""} data-sess="${s.id}"${past&&!isNext?' style="opacity:.7"':""}>
+        <summary><div class="row"><span class="when">${isNext?"Próxima · ":""}${fmt(s.d)} · ${esc(s.dur)}</span>${its.length?`<span class="chip">${done}/${its.length}</span>`:""}</div>
+        <div class="title" style="margin-bottom:2px">${esc(s.l)}</div>
+        <div class="note">${its.length?its.map(i=>esc(i.n)).join(" · "):"Sem vídeos novos"}</div>
+        ${its.length?`<div class="progress" aria-hidden="true"><span style="width:${Math.round(done/its.length*100)}%"></span></div>`:""}</summary>
+        <div class="sess-body">
+          <p class="note" style="margin:10px 0 0"><b>Precisa de:</b> ${esc(s.need)}</p>
+          ${blocos.map((x,n)=>`<h3>Bloco ${n+1} · ${esc(x.b.t)}</h3><p class="note" style="margin:0 0 8px">${esc(x.b.d)}</p><div class="stack">${x.list.map(videoCard).join("")}</div>`).join("")}
+          ${its.length?`<h3>Fechamento</h3><p class="note" style="margin:0">10 min de Stories do ritual “Dia de gravação”: bastidor + enquete “qual vocês querem ver primeiro?”.</p>`:""}
+        </div>
+      </details>`}).join("")}</div>
+    <h3>Na véspera · 20 min</h3>
+    <div class="card"><ul class="plain" style="margin:0"><li>Ler o roteiro da sessão aqui no app</li><li>Looks separados e baterias carregadas</li><li>Modelo confirmada, se a sessão pedir</li></ul></div>
+    ${capSection()}`;
+}
+
+let storyDate = null;
+const CICLO_INICIO = "2026-10-15";
+function addDays(s,n){const d=parse(s);d.setDate(d.getDate()+n);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`}
+function daysBetween(a,b){return Math.round((parse(b)-parse(a))/86400000)}
+const TURMASTORY = {"2026-10-15": "Anúncio: “Dia 26/10 começa a minha turma Maquiador Profissional Iniciante, aqui na Ilha. Pra quem quer começar do zero. Amanhã eu conto tudo.”", "2026-10-16": "Como funciona: “Segundas, das 14h às 18h, por 3 meses. R$ 270 por mês. São 6 vagas e restam 5.” Coloque a figurinha de contagem regressiva para 26/10 (crie uma vez e compartilhe nos outros dias).", "2026-10-17": "Para quem é: “Nunca pegou num pincel profissional? É exatamente pra você.” Caixinha: “Qual a sua maior dúvida pra começar na maquiagem?”", "2026-10-18": "Bastidor da noiva (só mãos e pincéis): “Tudo o que eu faço hoje, eu ensino na turma.” Compartilhe a contagem.", "2026-10-19": "Depois do post da trajetória: “Se você chegou até aqui e pensou ‘eu queria isso pra mim’: restam 5 vagas. Chama no WhatsApp.”", "2026-10-20": "Mostre a sala onde vão ser as aulas e o material: “É aqui que a turma começa segunda que vem.”", "2026-10-21": "Prova: print ou vídeo de uma aluna de turma anterior (com autorização). “Ela começou do zero também.”", "2026-10-22": "Responda 2 ou 3 dúvidas da caixinha de sábado, falando. Feche com “restam X vagas”.", "2026-10-23": "Depois do post da textura: “Isso é uma das primeiras coisas que eu ensino na turma.” Compartilhe a contagem.", "2026-10-24": "Dia de SJC. Só compartilhe a contagem: “faltam 2 dias”.", "2026-10-25": "Última chamada: “Amanhã começa. Restam X vagas. Se você está pensando, me chama hoje.”"};
+function storySteps(ds){
+  const steps=[];
+  const post=ITEMS.find(i=>i.d===ds);
+  const cap=CAPDAYS.find(c=>c.d===ds);
+  const tea=TEATRO.find(([x])=>x===ds);
+  if(post){
+    const r=resolved(post);
+    const k=post.id && !r.swapped ? STORYKIT[post.id] : null;
+    const kit=k || {m:"Hoje tem vídeo novo. "+r.h, c:r.t, i:["Caixinha", /^Sem pergunta|^Opcional/.test(r.q)?"O que você achou?":r.q.replace(/^Legenda: /,"")], f:"Obrigada por cada resposta de hoje."};
+    steps.push({h:"Manhã",t:"Rosto falando, antes do post",f:kit.m});
+    steps.push({h:"1–2h depois do post",t:"Chamada do "+post.n+" (compartilhe o post)",f:kit.c});
+    steps.push({h:"Tarde",t:kit.i[0],f:kit.i[1]});
+    steps.push({h:"Noite",t:"Fecho com rosto",f:kit.f});
+  } else {
+    const dk=DAYKIT[ds];
+    if(dk){
+      steps.push({h:"Manhã",t:dk.t,f:dk.m});
+      steps.push({h:"Tarde",t:dk.i[0],f:dk.i[1]});
+      steps.push({h:"Noite",t:"Fecho com rosto",f:dk.f});
+    } else {
+      const last=[...ITEMS].filter(i=>i.d<ds).pop();
+      if(last){ const r=resolved(last);
+        steps.push({h:"Manhã",t:"Respostas do último post",f:`Muita gente respondeu o post de ${fmt(last.d)}. Separei algumas respostas.`});
+        steps.push({h:"Tarde",t:"Caixinha",f:/^Sem pergunta|^Opcional|^Legenda/.test(r.q)?"O que você quer ver aqui essa semana?":r.q});
+        steps.push({h:"Noite",t:"Fecho com rosto",f:"O que ficou do dia, em uma frase."});
+      }
+    }
+  }
+  if(tea) steps.splice(1,0,{h:"Combinado",t:"Teatro da Ilha",f:tea[1],hl:1,plain:1});
+  if(TURMASTORY[ds]) steps.splice(1,0,{h:"Prioridade",t:"Turma · começa 26/10",f:TURMASTORY[ds],hl:1,plain:1});
+  if(ds>="2026-10-11" && ds<"2026-10-24"){const n=daysBetween(ds,"2026-10-24"); steps.push({h:"Série",t:"Diário de SJC",plain:1,f:`“Diário de SJC · faltam ${n} ${n===1?"dia":"dias"}”: um bastidor da preparação.`})}
+  if(ds>="2026-10-26" && ds<"2026-10-31"){const n=daysBetween(ds,"2026-10-31"); steps.push({h:"Série",t:"Contagem pro Club",plain:1,f:`“Contagem pro Club · faltam ${n}”: um detalhe da Oficina de Velas.`})}
+  if(cap && !DAYKIT[ds]) steps.push({h:"Ao vivo",t:cap.t,plain:1,f:"Stories ao vivo do seu celular: chegada, um momento no meio, o resultado no fim.",hl:1});
+  return steps;
+}
+function renderStories(){
+  const t=todayStr(); if(!storyDate) storyDate = t<CICLO_INICIO ? CICLO_INICIO : t;
+  if(storyDate<CICLO_INICIO) storyDate=CICLO_INICIO;
+  const back=addDays(t,-3); const start = back<CICLO_INICIO ? CICLO_INICIO : back;
+  const strip=[...Array(17)].map((_,k)=>addDays(start,k));
+  const sd=parse(storyDate), steps=storySteps(storyDate);
+  const key="dia-"+storyDate, done=ck(key);
+  const post=ITEMS.find(i=>i.d===storyDate);
+  $("#v-stories").innerHTML = `<h2>Stories</h2>
+    <div class="row" style="margin:4px 0 8px"><button class="btn ghost" type="button" data-sday="${addDays(storyDate,-1)}" aria-label="Dia anterior"${storyDate<=CICLO_INICIO?" disabled":""}>‹ anterior</button>
+      <label class="note" for="storyPick" style="display:flex;gap:6px;align-items:center">Ir para <input id="storyPick" type="date" min="${CICLO_INICIO}" value="${storyDate}" style="font:inherit;border:1px solid var(--line);border-radius:8px;padding:4px 6px;background:var(--surface);color:var(--ink)"></label>
+      <button class="btn ghost" type="button" data-sday="${addDays(storyDate,1)}" aria-label="Próximo dia">próximo ›</button></div>
+    <div class="days" role="group" aria-label="Escolher dia">${strip.map(x=>{const dx=parse(x);return `<button type="button" data-sday="${x}" aria-pressed="${x===storyDate}" class="${x===t?"today":""}"><span>${DOW[dx.getDay()]}</span><b>${dx.getDate()}</b>${(TEATRO.some(([y])=>y===x)||CAPDAYS.some(c=>c.d===x))?'<i aria-hidden="true"></i>':""}</button>`}).join("")}</div>
+    <h3>${storyDate===t?"Hoje · ":""}${DOWL[sd.getDay()]}, ${sd.getDate()} de ${MON[sd.getMonth()]} · ${done.length}/${steps.length}</h3>
+    ${post?`<p class="note" style="margin:-4px 0 10px">No feed: <b>${esc(post.n)} · ${esc(resolved(post).t)}</b></p>`:`<p class="note" style="margin:-4px 0 10px">Sem post no feed hoje.</p>`}
+    <div class="stack">${steps.map((s,k)=>`<div class="card story${s.hl?" feature":""}${done.includes(k)?" done-card":""}">
+      <div class="check" style="border:0;padding:0"><input type="checkbox" id="st-${k}" data-daily="${k}" data-day="${storyDate}"${done.includes(k)?" checked":""}>
+      <label for="st-${k}"><span class="when">${esc(s.h)} · ${esc(s.t)}</span><span class="phrase">${s.plain?esc(s.f):"“"+esc(s.f)+"”"}</span></label></div>
+    </div>`).join("")}</div>
+    <p class="note" style="margin-top:12px">Entre esses, mostre a vida acontecendo como você já faz: trabalho, aula, time, rotina. As frases são ponto de partida; fale do seu jeito.</p>
+    <details class="card" style="margin-top:10px"><summary>Regras de sempre</summary><ul class="plain" style="margin:8px 0 0">
+      <li>Rosto falando em pelo menos 3 Stories por dia.</li>
+      <li>Texto na tela em todo Story com fala.</li>
+      <li>No máximo 1 Story de venda a cada 5–6; link só com vaga ou data aberta.</li>
+    </ul></details>`;
+}
+
+function renderIdeias(){
+  const sorted = [...ideas].sort((a,b)=>(b.criada||0)-(a.criada||0));
+  $("#v-ideias").innerHTML = `${bankSection()}
+    <h2>Banco de ideias</h2>
+    <p class="note">Qualquer pensamento entra aqui na hora. Depois a gente encaixa no calendário.</p>
+    <form class="idea-form" id="ideaForm">
+      <label for="ideaText" class="note">Nova ideia</label>
+      <textarea id="ideaText" placeholder="Ex.: uma aluna disse que tem medo de passar batom vermelho…" maxlength="1000"></textarea>
+      <button class="btn" type="submit">Guardar ideia</button>
+    </form>
+    <h3>${sorted.length} ${sorted.length===1?"ideia":"ideias"}</h3>
+    ${sorted.length?`<div class="stack">${sorted.map(x=>`<div class="card idea"><p>${esc(x.texto)}<time>${x.criada?new Date(x.criada).toLocaleDateString("pt-BR",{day:"numeric",month:"short"}):""}</time></p><button class="btn ghost" data-del="${esc(x.id)}" aria-label="Apagar ideia">Apagar</button></div>`).join("")}</div>`:`<div class="empty">Nenhuma ideia guardada ainda. A primeira que surgir no dia, coloque aqui.</div>`}
+    <h3>Backup</h3>
+    <p class="note">${fs?"Sincronizado pelo Firebase entre os aparelhos. Exporte de vez em quando para ter uma cópia.":"Sem Firebase, tudo fica salvo só neste celular. Exporte e importe para levar a outro aparelho."}</p>
+    <div class="row" style="justify-content:flex-start;flex-wrap:wrap">
+      <button class="btn" type="button" id="exportBtn">Exportar backup</button>
+      <label class="btn ghost file-btn" for="importFile" style="border:1px solid var(--line);padding:9px 14px">Importar backup</label>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+    </div>
+    <p class="note" id="backupMsg"></p>`;
+}
+
+function render(){
+  ({hoje:renderHoje,cal:renderCal,grav:renderGrav,stories:renderStories,ideias:renderIdeias})[view]();
+}
+function renderAll(){ renderHoje(); renderCal(); renderGrav(); if(view==="ideias") renderIdeias(); }
+
+/* ---------- listas marcadas (roteiro do dia, teatro, dias ao vivo) ---------- */
+const checks = {}; // chave -> lista de itens marcados
+function ck(key){ return checks[key] || [] }
+function setCk(key,k,on){ let a=ck(key).filter(x=>x!==k); if(on) a.push(k); checks[key]=a; persistCheck(key) }
+function setList(key,arr){ checks[key]=arr; persistCheck(key) }
+function dailyDone(k,day){ return ck("dia-"+(day||todayStr())).includes(k) }
+function setDaily(k,on,day){ setCk("dia-"+(day||todayStr()),k,on) }
+function teaDone(k){ return ck("teatro").includes(k) }
+function setTea(k,on){ setCk("teatro",k,on) }
+
+/* ---------- armazenamento: Firebase quando configurado, senão o próprio celular ---------- */
+let fs = null;
+function lsGet(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function setSync(t){ const el=$("#sync"); if(el) el.textContent=t }
+function failed(e){ setSync(e && e.code==="permission-denied" ? "sem permissão: confira as regras do Firebase" : "não salvou, tente de novo") }
+
+function persistCheck(key){
+  if(fs) fs.collection("checks").doc(key).set({v:checks[key],t:Date.now()}).catch(failed);
+  else lsSet("handem-checks",checks);
+}
+async function setStatus(id,v){
+  state[id]=v; renderAll(); if(view==="stories") renderStories();
+  if(fs) fs.collection("estado").doc(id).set({s:v,t:Date.now()}).catch(failed);
+  else lsSet("handem-estado",state);
+}
+async function addIdea(texto){
+  if(fs){ fs.collection("ideias").add({texto,criada:Date.now()}).catch(failed) }
+  else { ideas.push({id:"l"+Date.now(),texto,criada:Date.now()}); lsSet("handem-ideias",ideas); renderIdeias(); }
+}
+async function delIdea(id){
+  if(fs){ fs.collection("ideias").doc(id).delete().catch(failed) }
+  else { const k=ideas.findIndex(x=>x.id===id); if(k>-1) ideas.splice(k,1); lsSet("handem-ideias",ideas); renderIdeias(); }
+}
+
+/* ---------- backup ---------- */
+function exportBackup(){
+  const data={versao:2,exportado:new Date().toISOString(),estado:state,ideias:ideas,checks};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="central-handem-backup-"+todayStr()+".json";
+  document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
+  $("#backupMsg").textContent="Backup gerado.";
+}
+function importBackup(file){
+  const r=new FileReader();
+  r.onload=async()=>{ try{ const d=JSON.parse(r.result); if(!d||typeof d.estado!=="object") throw 0;
+    if(fs){
+      const b=fs.batch(); let n=0;
+      for(const id in d.estado){ b.set(fs.collection("estado").doc(id),{s:d.estado[id],t:Date.now()}); n++ }
+      for(const key in (d.checks||{})){ b.set(fs.collection("checks").doc(key),{v:d.checks[key],t:Date.now()}); n++ }
+      (d.ideias||[]).forEach(x=>{ b.set(fs.collection("ideias").doc(String(x.id)),{texto:String(x.texto||""),criada:x.criada||Date.now()}); n++ });
+      if(n>450) throw 0; await b.commit();
+    } else {
+      for(const k in state) delete state[k]; Object.assign(state,d.estado); lsSet("handem-estado",state);
+      ideas.length=0; (d.ideias||[]).forEach(x=>ideas.push(x)); lsSet("handem-ideias",ideas);
+      for(const k in checks) delete checks[k]; Object.assign(checks,d.checks||{}); lsSet("handem-checks",checks);
+      renderAll(); renderStories(); renderIdeias();
+    }
+    $("#backupMsg").textContent="Backup importado.";
+  }catch(e){ $("#backupMsg").textContent="Esse arquivo não é um backup da Central. Escolha o .json exportado pelo app."; } };
+  r.readAsText(file);
+}
+
+/* ---------- Firebase: entra sozinho (anônimo), sem tela de login ---------- */
+function startFirebase(){
+  firebase.initializeApp(window.FIREBASE_CONFIG);
+  const auth=firebase.auth();
+  const db=firebase.firestore();
+  db.enablePersistence({synchronizeTabs:true}).catch(()=>{});
+  let unsubs=[];
+  setSync("conectando…");
+  auth.onAuthStateChanged(user=>{
+    unsubs.forEach(u=>u()); unsubs=[];
+    if(!user){ auth.signInAnonymously().catch(()=>setSync("sem conexão, salvo no aparelho")); return }
+    fs=db; setSync("sincronizando…");
+    const onErr=e=>{ setSync(e&&e.code==="permission-denied"?"sem permissão: confira as regras do Firebase":"sem conexão, salvo no aparelho") };
+    unsubs.push(db.collection("estado").onSnapshot({includeMetadataChanges:true},snap=>{
+      for(const k in state) delete state[k];
+      snap.docs.forEach(d=>{const v=d.data(); if(v&&typeof v.s==="number") state[d.id]=v.s});
+      setSync(snap.metadata.fromCache ? (navigator.onLine===false?"offline, sincroniza ao voltar":"conectando…") : "sincronizado");
+      renderAll(); if(view==="stories") renderStories();
+    },onErr));
+    unsubs.push(db.collection("checks").onSnapshot({includeMetadataChanges:true},snap=>{
+      for(const k in checks) delete checks[k];
+      snap.docs.forEach(d=>{const v=d.data(); if(v&&Array.isArray(v.v)) checks[d.id]=v.v});
+      renderAll(); if(view==="stories") renderStories();
+    },onErr));
+    unsubs.push(db.collection("ideias").onSnapshot({includeMetadataChanges:true},snap=>{
+      ideas.length=0; snap.docs.forEach(d=>{const v=d.data(); if(v) ideas.push({id:d.id,texto:String(v.texto||""),criada:v.criada})});
+      if(view==="ideias") renderIdeias();
+    },onErr));
+  });
+}
+
+/* ---------- eventos ---------- */
+document.addEventListener("change",e=>{
+  if(e.target.id==="importFile"){ if(e.target.files[0]) importBackup(e.target.files[0]); e.target.value=""; return }
+  const s=e.target.closest("[data-st]"); if(s){ setStatus(s.dataset.st,Number(s.value)); return }
+  const r=e.target.closest("[data-rec]"); if(r){ const id=r.dataset.rec; const cur=st(id); setStatus(id, r.checked ? Math.max(cur,1) : 0); return }
+  const cp=e.target.closest("[data-cap]"); if(cp){ setCap(cp.dataset.cap,cp.dataset.k,cp.checked); renderGrav(); return }
+  const tq=e.target.closest("[data-tea]"); if(tq){ setTea(Number(tq.dataset.tea),tq.checked); return }
+  const pf=e.target.closest("[data-pfk]"); if(pf){ setCk(pf.dataset.pfk,pf.dataset.pf,pf.checked); renderHoje(); return }
+  const dl=e.target.closest("[data-daily]"); if(dl){ setDaily(Number(dl.dataset.daily),dl.checked,dl.dataset.day); if(view==="stories") renderStories(); else dl.closest(".check").classList.toggle("done",dl.checked); return }
+  if(e.target.id==="storyPick"){ if(e.target.value){ storyDate = e.target.value<CICLO_INICIO ? CICLO_INICIO : e.target.value; renderStories() } return }
+  const c=e.target.closest(".check input"); if(c){ c.closest(".check").classList.toggle("done",c.checked) }
+});
+document.addEventListener("toggle",e=>{ const d=e.target; if(d.matches && d.matches("details[data-sess]") && d.open) openSess=d.dataset.sess; if(d.matches && d.matches("details[data-capday]") && d.open) openCap=d.dataset.capday; if(d.matches && d.matches("details[data-pfg]")){ const g=d.dataset.pfg; const inv=(g==="agenda"); if(d.open!==inv) pfOpen.add(g); else pfOpen.delete(g) } },true);
+document.addEventListener("click",e=>{
+  const t=e.target.closest("nav.tabs button"); if(t){ view=t.dataset.v; document.querySelectorAll("nav.tabs button").forEach(b=>{ if(b===t) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current") }); document.querySelectorAll("main>section").forEach(sec=>sec.hidden = sec.id!=="v-"+view); render(); try{localStorage.setItem("handem-view",view)}catch(_){} window.scrollTo(0,0); return }
+  const cpb=e.target.closest("[data-copy]"); if(cpb){ const [k,id]=cpb.dataset.copy.split("|"); const txt=findCopy(k,id); const ok=()=>{cpb.textContent="Copiado ✓"; setTimeout(()=>cpb.textContent="Copiar",1800)}; if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok,()=>{prompt("Copie o texto:",txt)}); else prompt("Copie o texto:",txt); return }
+  const g=e.target.closest("[data-gocap]"); if(g){ openCap=g.dataset.gocap; document.querySelector('nav.tabs button[data-v="grav"]').click(); setTimeout(()=>{const el=document.querySelector(`[data-capday="${openCap}"]`); if(el) el.scrollIntoView({block:"start"})},50); return }
+  const sdb=e.target.closest("[data-sday]"); if(sdb){ if(sdb.disabled) return; storyDate = sdb.dataset.sday<CICLO_INICIO ? CICLO_INICIO : sdb.dataset.sday; renderStories(); const p=document.querySelector('.days [aria-pressed="true"]'); if(p) p.scrollIntoView({inline:"center",block:"nearest"}); return }
+  const sw=e.target.closest("[data-swap]"); if(sw){ const sel=document.getElementById("sw-"+sw.dataset.swap); if(sel&&sel.value){ ITEMS.forEach(i=>{ if(ck("troca-"+i.id)[0]===sw.dataset.swap) setList("troca-"+i.id,[]) }); setList("troca-"+sel.value,[sw.dataset.swap]); renderAll(); renderIdeias(); sw.textContent="Trocado ✓" } return }
+  const us=e.target.closest("[data-unswap]"); if(us){ setList("troca-"+us.dataset.unswap,[]); renderAll(); if(view==="ideias") renderIdeias(); return }
+  const bs=e.target.closest("[data-bserie]"); if(bs){ bankSerie=bs.dataset.bserie; renderIdeias(); return }
+  const f=e.target.closest("[data-f]"); if(f){ filter=f.dataset.f; renderCal(); return }
+  const d=e.target.closest("[data-del]"); if(d){ delIdea(d.dataset.del); return }
+  if(e.target.id==="exportBtn"){ exportBackup(); return }
+});
+document.addEventListener("submit",e=>{
+  if(e.target.id!=="ideaForm") return; e.preventDefault();
+  const ta=$("#ideaText"); const v=ta.value.trim(); if(!v) return; ta.value=""; addIdea(v);
+});
+
+/* ---------- início ---------- */
+(function init(){
+  try{ const v=localStorage.getItem("handem-view"); if(v && ["hoje","cal","grav","stories","ideias"].includes(v)) view=v }catch(_){}
+  document.querySelectorAll("nav.tabs button").forEach(b=>{ if(b.dataset.v===view) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current") });
+  document.querySelectorAll("main>section").forEach(sec=>sec.hidden = sec.id!=="v-"+view);
+  renderAll(); renderStories(); renderIdeias(); render();
+  Object.assign(state,lsGet("handem-estado",{})); ideas.push(...lsGet("handem-ideias",[])); Object.assign(checks,lsGet("handem-checks",{}));
+  if(window.FIREBASE_CONFIG && window.firebase){ try{ startFirebase() }catch(e){ setSync("salvo neste celular") } } else setSync("salvo neste celular");
+  renderAll(); renderStories(); renderIdeias(); render();
+  if("serviceWorker" in navigator){ window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{})) }
+})();
 </script>
+
 </body>
 </html>
