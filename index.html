@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>Isabella Handem</title>
 <meta name="description" content="Handem Club, curso de automaquiagem e tudo da Isabella Handem na Ilha do Governador.">
 <meta property="og:title" content="Isabella Handem">
@@ -36,10 +37,7 @@ const ENCONTROS = [
   --wine:#6E1F2E; --wine-ink:#F8F1E7; --gold:#B08D57; --gold-soft:#E9DCC4;
   --display:"Lora",Georgia,serif; --body:"Manrope",system-ui,-apple-system,sans-serif;
 }
-@media (prefers-color-scheme: dark){
-  :root{ --bg:#1A1412; --surface:#241C19; --ink:#F3EADF; --muted:#B9A99C; --line:#3A2E28;
-    --wine:#7E2737; --wine-ink:#F8F1E7; --gold:#CDAA70; --gold-soft:#3A3022; }
-}
+
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
@@ -103,7 +101,7 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offs
           <li>Assinatura: <strong>R$ 79,90/mês</strong>, experiência inclusa (mínimo 3 meses)</li>
           <li>Traga uma amiga: <strong>ela paga 50%</strong> na primeira</li>
         </ul>
-        <a class="sitelink" id="l-site" href="#">Ver fotos e tudo sobre o Club →</a>
+        <a class="sitelink" id="l-site" href="#">Dúvidas? Fala comigo no WhatsApp →</a>
       </div>
     </details>
   </section>
@@ -125,9 +123,9 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offs
 <script>
 const wa = (num, msg) => `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
 const me = CONFIG.whatsapp, esp = CONFIG.espaco, par = CONFIG.parceria;
-document.getElementById("cta-club").href   = wa(me, "Oi, Isa! Vim pelo Instagram e quero saber do Handem Club.");
+document.getElementById("cta-club").href   = CONFIG.clubSite;
 document.getElementById("cta-curso").href  = CONFIG.kiwify;
-document.getElementById("l-site").href = CONFIG.clubSite;
+document.getElementById("l-site").href = wa(me, "Oi, Isa! Vim pelo Instagram e tenho uma dúvida sobre o Handem Club.");
 /* Turma Maquiador Profissional Iniciante: aparece só até o início (26/10) */
 (function(){ const t=new Date(), fim=new Date(2026,9,26,23,59); const el=document.getElementById("l-turma");
   if(t<=fim){ el.hidden=false; el.href=wa(me,"Oi, Isa! Vim pelo Instagram e quero saber da turma Maquiador Profissional Iniciante que começa dia 26/10."); } })();
