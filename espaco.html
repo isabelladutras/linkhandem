@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Espaço Handem</title>
+<meta name="description" content="Dia da Noiva, Spa Day, Pool Party e celebrações entre amigas no Espaço Handem, Ilha do Governador.">
+<meta property="og:title" content="Espaço Handem · Ilha do Governador">
+<meta property="og:description" content="Experiências femininas: Dia da Noiva, Spa Day, Pool Party, Chá de Lingerie e mais.">
+<meta name="theme-color" content="#F3EBE0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap">
+<script>
+/* ================================================================
+   PREENCHA AQUI. É só trocar o que está entre aspas.
+   ================================================================ */
+const CONFIG = {
+  geral:        "5521986153800",  // Isa: experiências, noivas, locação, massagem
+  costura:      "5521981584274",  // vestidos e escola de costura
+  quiropraxia:  "5521989967102",  // quiropraxia
+  clubSite: "https://isabelladutras.github.io/handemclub/",
+  endereco: "Tauá · Ilha do Governador, RJ",
+  mapa:     "https://share.google/ByaRM7ZeqrBMhRp2z", // link do Google Maps (vazio = esconde)
+};
+</script>
+<style>
+:root{
+  --bg:#F3EBE0; --surface:#FBF7F1; --ink:#2E1A1F; --muted:#7A6A62; --line:#E2D5C3;
+  --wine:#6E1F2E; --wine-ink:#F8F1E7; --gold:#B08D57; --gold-soft:#E9DCC4;
+  --display:"Lora",Georgia,serif; --body:"Manrope",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+main{max-width:440px;margin:0 auto;padding:26px 16px 40px}
+a{color:inherit}
+header{text-align:center;margin-bottom:18px}
+.logo{width:88px;height:88px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 10px;border:2px solid var(--gold);background:#fff}
+h1{font-family:var(--display);font-weight:600;font-size:1.45rem;line-height:1.15;margin:0 0 4px}
+.tag{color:var(--muted);margin:0;font-size:.9rem}
+.hero{background:var(--wine);color:var(--wine-ink);border-radius:18px;padding:18px;margin-bottom:18px}
+.eyebrow{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold);margin:0 0 6px}
+.hero h2{font-family:var(--display);font-weight:600;font-size:1.25rem;line-height:1.25;margin:0 0 4px;text-wrap:balance}
+.hero p{margin:0 0 14px;opacity:.85;font-size:.9rem}
+.btn{display:block;text-align:center;text-decoration:none;font-weight:700;padding:13px 16px;border-radius:999px;background:var(--gold);color:#2E1A1F}
+.btn:active,.link:active{transform:scale(.99)}
+h3{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--muted);margin:18px 4px 8px}
+.links{display:grid;gap:8px}
+.link{display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.link b{font-weight:600;display:block}
+.link span{color:var(--muted);font-size:.8rem}
+.link i{font-style:normal;color:var(--gold);font-size:1.15rem;flex:none}
+.link.destaque{border-color:var(--gold)}
+footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:24px}
+footer a{color:var(--wine);font-weight:600}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img class="logo" src="data:image/jpeg;base64,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" alt="Espaço Handem">
+    <h1>Espaço Handem</h1>
+    <p class="tag">Experiências femininas na Ilha do Governador</p>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-t">
+    <p class="eyebrow">Spa · Pool Party · Amigas</p>
+    <h2 id="hero-t">Um dia só seu e das suas amigas</h2>
+    <p>A gente monta a experiência do jeito que você imaginou. Me conta a data e quantas vocês são.</p>
+    <a class="btn" data-wa="geral" data-msg="Oi, Isa! Vim pelo perfil do Espaço Handem e quero montar um dia com as minhas amigas." href="#">Quero montar o meu dia</a>
+  </section>
+
+  <h3>Celebrações</h3>
+  <nav class="links" aria-label="Celebrações">
+    <a class="link destaque" data-wa="geral" data-msg="Oi, Isa! Vim pelo perfil do Espaço Handem e quero saber sobre o Dia da Noiva." href="#"><div><b>Dia da Noiva</b><span>Maquiagem, penteado e making of no Espaço</span></div><i aria-hidden="true">→</i></a>
+    <a class="link" data-wa="geral" data-msg="Oi, Isa! Vim pelo perfil do Espaço Handem e quero saber sobre o Spa Day." href="#"><div><b>Spa Day</b><span>Um dia de cuidado, sozinha ou com amigas</span></div><i aria-hidden="true">→</i></a>
+    <a class="link" data-wa="geral" data-msg="Oi, Isa! Vim pelo perfil do Espaço Handem e quero saber sobre a Pool Party." href="#"><div><b>Pool Party</b><span>Piscina e celebração entre amigas</span></div><i aria-hidden="true">→</i></a>
+    <a class="link" data-wa="geral" data-msg="Oi, Isa! Vim pelo perfil do Espaço Handem e quero saber sobre Chá de Lingerie e eventos." href="#"><div><b>Chá de Lingerie e eventos</b><span>Aniversários e encontros especiais</span></div><i aria-hidden="true">→</i></a>
+    <a class="link" data-wa="geral" data-msg="Oi, Isa! Vim pelo perfil do Espaço Handem e quero saber sobre a locação do espaço e da suíte." href="#"><div><b>Locação do espaço e suíte</b><span>Para o seu evento ou ensaio</span></div><i aria-hidden="true">→</i></a>
+  </nav>
+
+  <h3>Bem-estar</h3>
+  <nav class="links" aria-label="Bem-estar">
+    <a class="link" data-wa="geral" data-msg="Oi, Isa! Vim pelo perfil do Espaço Handem e quero saber sobre massagem." href="#"><div><b>Massagem</b><span>Relaxante e bem-estar</span></div><i aria-hidden="true">→</i></a>
+    <a class="link" data-wa="quiropraxia" data-msg="Oi! Vim pelo perfil do Espaço Handem e queria informações sobre o serviço de quiropraxia." href="#"><div><b>Quiropraxia</b><span>Atendimento no Espaço Handem</span></div><i aria-hidden="true">→</i></a>
+  </nav>
+
+  <h3>Também no Espaço</h3>
+  <nav class="links" aria-label="Também no Espaço">
+    <a class="link destaque" id="l-club" href="#"><div><b>Handem Club</b><span>Uma experiência por mês entre mulheres</span></div><i aria-hidden="true">→</i></a>
+    <a class="link" data-wa="costura" data-msg="Oi! Vim pelo perfil do Espaço Handem e quero saber do aluguel de vestidos de festa." href="#"><div><b>Aluguel de vestidos de festa</b><span>Para madrinhas, formaturas e festas</span></div><i aria-hidden="true">→</i></a>
+    <a class="link" data-wa="costura" data-msg="Oi! Vim pelo perfil do Espaço Handem e quero saber das aulas da escola de costura." href="#"><div><b>Escola de costura</b><span>Aulas no Espaço Handem</span></div><i aria-hidden="true">→</i></a>
+  </nav>
+
+  <footer>
+    <p id="addr"></p>
+  </footer>
+</main>
+<script>
+const wa = (num, msg) => `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+document.querySelectorAll("[data-wa]").forEach(a => {
+  a.href = wa(CONFIG[a.dataset.wa], a.dataset.msg);
+});
+document.getElementById("l-club").href = CONFIG.clubSite;
+const addr = document.getElementById("addr");
+addr.innerHTML = CONFIG.mapa ? `Espaço Handem · ${CONFIG.endereco} · <a href="${CONFIG.mapa}">ver no mapa</a>` : `Espaço Handem · ${CONFIG.endereco}`;
+</script>
+</body>
+</html>
