@@ -108,7 +108,7 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offs
 
   <nav class="links" aria-label="Links">
     <a class="link curso" id="cta-curso" href="#"><div><b>Curso de automaquiagem online</b><span>Método Automake 21 dias, com aulas ao vivo</span></div><span class="price">R$ 47</span></a>
-    <a class="link curso" id="l-turma" href="#" hidden><div><b>Curso de maquiagem profissional</b><span>Do zero · começa 26/10 · segundas 14h–18h</span></div><span class="price">R$ 270<small style="font-size:.7em">/mês</small></span></a>
+    <a class="link curso" id="l-turma" href="#" hidden><div><b>Curso de maquiagem profissional</b><span>Do zero · segundas 14h–18h · inscrições até 9/11</span></div><span class="price">R$ 270<small style="font-size:.7em">/mês</small></span></a>
     <a class="link" href="https://www.instagram.com/handemmakeup/"><div><b>Maquiagem e penteado</b><span>Atendimento com o meu time</span></div><i aria-hidden="true">→</i></a>
     <a class="link" id="l-vestidos" href="#"><div><b>Aluguel de vestidos de festa</b><span>No Espaço Handem</span></div><i aria-hidden="true">→</i></a>
     <a class="link" id="l-costura" href="#"><div><b>Escola de costura</b><span>Aulas no Espaço Handem</span></div><i aria-hidden="true">→</i></a>
@@ -126,9 +126,9 @@ const me = CONFIG.whatsapp, esp = CONFIG.espaco, par = CONFIG.parceria;
 document.getElementById("cta-club").href   = CONFIG.clubSite;
 document.getElementById("cta-curso").href  = CONFIG.kiwify;
 document.getElementById("l-site").href = wa(me, "Oi, Isa! Vim pelo Instagram e tenho uma dúvida sobre o Handem Club.");
-/* Turma Maquiador Profissional Iniciante: aparece só até o início (26/10) */
-(function(){ const t=new Date(), fim=new Date(2026,9,26,23,59); const el=document.getElementById("l-turma");
-  if(t<=fim){ el.hidden=false; el.href=wa(me,"Oi, Isa! Vim pelo Instagram e quero saber da turma Maquiador Profissional Iniciante que começa dia 26/10."); } })();
+/* Turma Maquiador Profissional Iniciante: aparece até o fim das inscrições (9/11) */
+(function(){ const t=new Date(), fim=new Date(2026,10,9,23,59); const el=document.getElementById("l-turma");
+  if(t<=fim){ el.hidden=false; el.href=wa(me,"Oi, Isa! Vim pelo Instagram e quero saber da turma Maquiador Profissional Iniciante."); } })();
 document.getElementById("l-vestidos").href = wa(esp, "Oi! Vim pelo Instagram da Isa e quero saber do aluguel de vestidos de festa.");
 document.getElementById("l-costura").href  = wa(esp, "Oi! Vim pelo Instagram da Isa e quero saber das aulas da escola de costura.");
 document.getElementById("l-parceria").href = wa(par, "Oi! Vim pelo Instagram da Isa e quero falar sobre uma parceria.");
