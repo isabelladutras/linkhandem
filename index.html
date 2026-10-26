@@ -25,10 +25,11 @@ const CONFIG = {
   endereco: "Espaço Handem · Tauá, Ilha do Governador",
   mapa:     "",                       // link do Google Maps do Espaço (vazio = esconde)
 };
-/* Próximos encontros do Club. Apague os que já passaram e acrescente os novos. */
+/* Próximos encontros do Club. Cada um some sozinho da página depois do horário em "fim". */
 const ENCONTROS = [
-  { tema: "Novembro · tema em breve", datas: "qua 25/11 e sáb 28/11" },
-  { tema: "Dezembro · tema em breve", datas: "qua 16/12 e sáb 19/12" },
+  { tema: "Outubro · Oficina de Velas", datas: "sáb 31/10 · 14h", fim: "2026-10-31T14:00", aviso: "ainda tem vagas" },
+  { tema: "Novembro · Yoga + terrário",  datas: "sáb 28/11 · 14h", fim: "2026-11-28T14:00" },
+  { tema: "Dezembro · tema em breve",    datas: "sáb 19/12",       fim: "2026-12-19T14:00" },
 ];
 </script>
 <style>
@@ -132,8 +133,13 @@ document.getElementById("l-site").href = wa(me, "Oi, Isa! Vim pelo Instagram e t
 document.getElementById("l-vestidos").href = wa(esp, "Oi! Vim pelo Instagram da Isa e quero saber do aluguel de vestidos de festa.");
 document.getElementById("l-costura").href  = wa(esp, "Oi! Vim pelo Instagram da Isa e quero saber das aulas da escola de costura.");
 document.getElementById("l-parceria").href = wa(par, "Oi! Vim pelo Instagram da Isa e quero falar sobre uma parceria.");
-document.getElementById("next").textContent = ENCONTROS.length ? "Próximo: " + ENCONTROS[0].datas : "Handem Club";
-document.getElementById("dates").innerHTML = ENCONTROS.map(e => `<li><b>${e.tema}</b><span>${e.datas}</span></li>`).join("");
+const agora = new Date();
+const futuros = ENCONTROS.filter(e => !e.fim || new Date(e.fim) > agora);
+const prox = futuros[0];
+document.getElementById("next").textContent = prox ? "Próximo: " + prox.datas + (prox.aviso ? " · " + prox.aviso : "") : "Handem Club";
+if (prox) { document.getElementById("cta-club").textContent = "Quero minha vaga em " + prox.datas.split(" ")[1];
+            document.getElementById("cta-club").href = CONFIG.clubSite + "#proxima"; }
+document.getElementById("dates").innerHTML = futuros.map(e => `<li><b>${e.tema}</b><span>${e.datas}</span></li>`).join("");
 const addr = document.getElementById("addr");
 addr.innerHTML = CONFIG.mapa ? `${CONFIG.endereco} · <a href="${CONFIG.mapa}">ver no mapa</a>` : CONFIG.endereco;
 </script>
