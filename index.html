@@ -25,11 +25,11 @@ const CONFIG = {
   endereco: "Espaço Handem · Tauá, Ilha do Governador",
   mapa:     "",                       // link do Google Maps do Espaço (vazio = esconde)
 };
-/* Próximos encontros do Club. Cada um some sozinho da página depois do horário em "fim". */
+/* Próximos encontros do Club. Cada um some sozinho depois da data em "ate". */
 const ENCONTROS = [
-  { tema: "Outubro · Oficina de Velas", datas: "sáb 31/10 · 14h", fim: "2026-10-31T14:00", aviso: "ainda tem vagas" },
-  { tema: "Novembro · Yoga + terrário",  datas: "sáb 28/11 · 14h", fim: "2026-11-28T14:00" },
-  { tema: "Dezembro · tema em breve",    datas: "sáb 19/12",       fim: "2026-12-19T14:00" },
+  { tema: "Outubro · Oficina de Velas", datas: "sáb 31/10 · 14h", ate: "2026-10-31" },
+  { tema: "Novembro · tema em breve", datas: "qua 25/11 e sáb 28/11", ate: "2026-11-28" },
+  { tema: "Dezembro · tema em breve", datas: "qua 16/12 e sáb 19/12", ate: "2026-12-19" },
 ];
 </script>
 <style>
@@ -109,7 +109,7 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offs
 
   <nav class="links" aria-label="Links">
     <a class="link curso" id="cta-curso" href="#"><div><b>Curso de automaquiagem online</b><span>Método Automake 21 dias, com aulas ao vivo</span></div><span class="price">R$ 47</span></a>
-    <a class="link curso" id="l-turma" href="#" hidden><div><b>Curso de maquiagem profissional</b><span>Do zero · segundas 14h–18h · inscrições até 9/11</span></div><span class="price">R$ 270<small style="font-size:.7em">/mês</small></span></a>
+    <a class="link curso" id="l-turma" href="#" hidden><div><b>Curso de maquiagem profissional</b><span>Do zero · começa 3/11 · inscrições até 16/11</span></div><span class="price">R$ 270<small style="font-size:.7em">/mês</small></span></a>
     <a class="link" href="https://www.instagram.com/handemmakeup/"><div><b>Maquiagem e penteado</b><span>Atendimento com o meu time</span></div><i aria-hidden="true">→</i></a>
     <a class="link" id="l-vestidos" href="#"><div><b>Aluguel de vestidos de festa</b><span>No Espaço Handem</span></div><i aria-hidden="true">→</i></a>
     <a class="link" id="l-costura" href="#"><div><b>Escola de costura</b><span>Aulas no Espaço Handem</span></div><i aria-hidden="true">→</i></a>
@@ -127,19 +127,15 @@ const me = CONFIG.whatsapp, esp = CONFIG.espaco, par = CONFIG.parceria;
 document.getElementById("cta-club").href   = CONFIG.clubSite;
 document.getElementById("cta-curso").href  = CONFIG.kiwify;
 document.getElementById("l-site").href = wa(me, "Oi, Isa! Vim pelo Instagram e tenho uma dúvida sobre o Handem Club.");
-/* Turma Maquiador Profissional Iniciante: aparece até o fim das inscrições (9/11) */
-(function(){ const t=new Date(), fim=new Date(2026,10,9,23,59); const el=document.getElementById("l-turma");
+/* Turma Maquiador Profissional Iniciante: aparece até o fim das inscrições (16/11) */
+(function(){ const t=new Date(), fim=new Date(2026,10,16,23,59); const el=document.getElementById("l-turma");
   if(t<=fim){ el.hidden=false; el.href=wa(me,"Oi, Isa! Vim pelo Instagram e quero saber da turma Maquiador Profissional Iniciante."); } })();
 document.getElementById("l-vestidos").href = wa(esp, "Oi! Vim pelo Instagram da Isa e quero saber do aluguel de vestidos de festa.");
 document.getElementById("l-costura").href  = wa(esp, "Oi! Vim pelo Instagram da Isa e quero saber das aulas da escola de costura.");
 document.getElementById("l-parceria").href = wa(par, "Oi! Vim pelo Instagram da Isa e quero falar sobre uma parceria.");
-const agora = new Date();
-const futuros = ENCONTROS.filter(e => !e.fim || new Date(e.fim) > agora);
-const prox = futuros[0];
-document.getElementById("next").textContent = prox ? "Próximo: " + prox.datas + (prox.aviso ? " · " + prox.aviso : "") : "Handem Club";
-if (prox) { document.getElementById("cta-club").textContent = "Quero minha vaga em " + prox.datas.split(" ")[1];
-            document.getElementById("cta-club").href = CONFIG.clubSite + "#proxima"; }
-document.getElementById("dates").innerHTML = futuros.map(e => `<li><b>${e.tema}</b><span>${e.datas}</span></li>`).join("");
+(function(){ const t=new Date(), hoje=`${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,"0")}-${String(t.getDate()).padStart(2,"0")}`; for(let k=ENCONTROS.length-1;k>=0;k--) if(ENCONTROS[k].ate && ENCONTROS[k].ate<hoje) ENCONTROS.splice(k,1); })();
+document.getElementById("next").textContent = ENCONTROS.length ? "Próximo: " + ENCONTROS[0].datas : "Handem Club";
+document.getElementById("dates").innerHTML = ENCONTROS.map(e => `<li><b>${e.tema}</b><span>${e.datas}</span></li>`).join("");
 const addr = document.getElementById("addr");
 addr.innerHTML = CONFIG.mapa ? `${CONFIG.endereco} · <a href="${CONFIG.mapa}">ver no mapa</a>` : CONFIG.endereco;
 </script>
