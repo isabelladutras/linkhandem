@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mídia Kit · Isabella Handem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F0E8; --paper:#FBF8F3; --beige:#E9DDCC; --sand:#D9C7AE;
+    --gold:#B08D57; --gold-soft:#CDB389; --wine:#6E1F2E; --wine-deep:#4F1520;
+    --ink:#2B2220; --muted:#76675F; --line:#E2D5C3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font-family:'Jost',system-ui,sans-serif;font-weight:400;line-height:1.55;font-size:16px}
+  a{color:inherit}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px}
+  .serif{font-family:'Playfair Display',Georgia,serif}
+  .eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:500}
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:clamp(26px,5vw,36px);line-height:1.15;color:var(--wine);margin:10px 0 22px}
+
+  /* HERO */
+  .hero{background:var(--wine);color:var(--paper);padding:64px 0 56px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;border:1px solid rgba(205,179,137,.35)}
+  .hero::before{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;border:1px solid rgba(205,179,137,.25)}
+  .hero .eyebrow{color:var(--gold-soft)}
+  .hero h1{font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(44px,10vw,78px);line-height:1;margin:18px 0 14px;letter-spacing:-.01em}
+  .hero h1 em{font-style:italic;color:var(--gold-soft)}
+  .hero .role{font-size:clamp(16px,3.4vw,19px);font-weight:300;opacity:.92;max-width:560px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  .tag{border:1px solid rgba(205,179,137,.55);color:var(--paper);padding:6px 13px;border-radius:999px;font-size:13px;font-weight:400;text-decoration:none}
+  a.tag:hover{background:rgba(205,179,137,.15)}
+
+  /* ABOUT */
+  .about p{font-size:17.5px;color:var(--ink);max-width:680px}
+  .about p + p{margin-top:14px}
+  .about .lead{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(21px,4.2vw,26px);line-height:1.35;color:var(--wine);margin-bottom:20px;max-width:640px}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media(min-width:700px){.stats{grid-template-columns:repeat(4,1fr)}}
+  .stat{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 16px}
+  .stat .n{font-family:'Playfair Display',Georgia,serif;font-size:clamp(30px,6vw,38px);color:var(--wine);line-height:1;font-weight:500}
+  .stat .l{font-size:13.5px;color:var(--muted);margin-top:8px;line-height:1.35}
+  .source{font-size:12.5px;color:var(--muted);margin-top:16px}
+
+  /* AUDIENCE */
+  .aud{display:grid;gap:26px}
+  @media(min-width:700px){.aud{grid-template-columns:1.4fr 1fr;gap:40px;align-items:start}}
+  .bars{display:grid;gap:11px}
+  .bar{display:grid;grid-template-columns:52px 1fr 48px;align-items:center;gap:12px;font-size:14px}
+  .bar .k{color:var(--muted)}
+  .bar .track,.bar .fill{display:block}
+  .bar .track{height:12px;background:var(--beige);border-radius:999px;overflow:hidden}
+  .bar .fill{height:100%;background:var(--wine);border-radius:999px}
+  .bar.soft .fill{background:var(--gold-soft)}
+  .bar .v{text-align:right;font-weight:500}
+  .gender{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .gender .big{font-family:'Playfair Display',Georgia,serif;font-size:52px;color:var(--wine);line-height:1}
+  .gender .cap{color:var(--muted);font-size:14px;margin-top:6px}
+  .split{display:flex;height:12px;border-radius:999px;overflow:hidden;margin:18px 0 10px}
+  .split span{display:block;height:100%}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted)}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+
+  /* TOPICS */
+  .topics{display:grid;gap:12px}
+  @media(min-width:700px){.topics{grid-template-columns:repeat(3,1fr)}}
+  .topic{border-left:2px solid var(--gold);padding:4px 0 4px 16px}
+  .topic h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:19px;color:var(--wine)}
+  .topic p{font-size:14.5px;color:var(--muted);margin-top:4px}
+
+  /* CASES */
+  .feature{background:var(--wine-deep);color:var(--paper);border-radius:18px;padding:28px 24px;margin-bottom:14px}
+  .feature .eyebrow{color:var(--gold-soft)}
+  .feature h3{font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(24px,5vw,30px);margin:8px 0 18px}
+  .fstats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 12px}
+  @media(min-width:700px){.fstats{grid-template-columns:repeat(4,1fr)}}
+  .fstats .n{font-family:'Playfair Display',Georgia,serif;font-size:30px;line-height:1;color:var(--gold-soft)}
+  .fstats .l{font-size:13px;opacity:.85;margin-top:6px}
+  .feature a{display:inline-block;margin-top:20px;font-size:14px;color:var(--gold-soft);text-underline-offset:3px}
+  .cases{display:grid;gap:12px}
+  @media(min-width:700px){.cases{grid-template-columns:repeat(3,1fr)}}
+  .case{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;display:block;transition:border-color .2s}
+  .case:hover{border-color:var(--gold)}
+  .case .brand{font-weight:500;font-size:16px}
+  .case .what{font-size:13.5px;color:var(--muted);margin:3px 0 12px}
+  .case .num{font-family:'Playfair Display',Georgia,serif;font-size:24px;color:var(--wine)}
+  .case .num small{font-family:'Jost',sans-serif;font-size:12.5px;color:var(--muted);margin-left:4px}
+
+  /* PRICES */
+  .pgrid{display:grid;gap:16px}
+  @media(min-width:700px){.pgrid{grid-template-columns:1fr 1fr}}
+  .pcard{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px 22px}
+  .pcard h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:22px;color:var(--wine);margin-bottom:4px}
+  .pcard .sub{font-size:13.5px;color:var(--muted);margin-bottom:14px}
+  .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:15px}
+  .row:last-child{border-bottom:0}
+  .row b{font-weight:500;white-space:nowrap;color:var(--wine)}
+  .note{font-size:13.5px;color:var(--muted);margin-top:18px;max-width:680px}
+
+  /* CONTACT */
+  .contact{background:var(--beige);border-top:0}
+  .contact .box{text-align:center}
+  .contact h2{margin-bottom:10px}
+  .contact p{color:var(--muted);max-width:520px;margin:0 auto}
+  .btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
+  .btn{display:inline-block;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px}
+  .btn.p{background:var(--wine);color:var(--paper)}
+  .btn.s{border:1px solid var(--wine);color:var(--wine)}
+  .contact .plain{margin-top:16px;font-size:14px;color:var(--ink)}
+  footer{text-align:center;font-size:12px;color:var(--muted);padding:22px 0 34px;background:var(--beige)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Mídia Kit · 2026</div>
+    <h1>Isabella <em>Handem</em></h1>
+    <p class="role">Criadora de conteúdo de beleza, lifestyle e negócios. Rio de Janeiro e São José dos Campos.</p>
+    <div class="tags">
+      <a class="tag" href="https://www.instagram.com/handemisabella/">@handemisabella</a>
+      <span class="tag">Influenciadora</span>
+      <span class="tag">UGC Creator</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="about">
+    <div class="wrap">
+      <div class="eyebrow">Sobre</div>
+      <h2>Beleza, rotina e negócios, do jeito que a vida acontece</h2>
+      <p class="lead">Conteúdo que nasce de situações reais: bastidores, rotina, opinião e histórias.</p>
+      <p>Há mais de 7 anos no mercado de beleza, falo com mulheres sobre automaquiagem, pele madura e autocuidado, e mostro a rotina de quem toca vários negócios ao mesmo tempo, da Ilha do Governador a São José dos Campos.</p>
+      <p>Tenho formação de professora, então explico de um jeito que a seguidora entende e aplica. Sou criadora do <b>Método Automake 21 dias</b>, um curso online de automaquiagem, e do <b>Handem Club</b>, uma comunidade de experiências presenciais para mulheres.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Números</div>
+      <h2>Instagram em números</h2>
+      <div class="stats">
+        <div class="stat"><div class="n">13,9 mil</div><div class="l">seguidores no Instagram</div></div>
+        <div class="stat"><div class="n">79%</div><div class="l">do público é feminino</div></div>
+        <div class="stat"><div class="n">18,7 mil</div><div class="l">views no Reels de maior alcance (publi)</div></div>
+        <div class="stat"><div class="n">43 mil</div><div class="l">views em 25 Reels (ago–nov/2026)</div></div>
+      </div>
+      <p class="source">Fonte: dados do Instagram via Metricool, coletados em 02/11/2026. Reels publicados entre 07/08 e 02/11/2026.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Público</div>
+      <h2>Quem acompanha</h2>
+      <div class="aud">
+        <div>
+          <div class="bars">
+            <div class="bar"><span class="k">18–24</span><span class="track"><span class="fill" style="width:42%"></span></span><span class="v">14%</span></div>
+            <div class="bar"><span class="k">25–34</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="v">34%</span></div>
+            <div class="bar"><span class="k">35–44</span><span class="track"><span class="fill" style="width:74%"></span></span><span class="v">25%</span></div>
+            <div class="bar"><span class="k">45–54</span><span class="track"><span class="fill" style="width:45%"></span></span><span class="v">15%</span></div>
+            <div class="bar"><span class="k">55–64</span><span class="track"><span class="fill" style="width:24%"></span></span><span class="v">8%</span></div>
+            <div class="bar soft"><span class="k">65+</span><span class="track"><span class="fill" style="width:9%"></span></span><span class="v">3%</span></div>
+          </div>
+          <p class="source">Faixa etária dos seguidores (todos os gêneros). 74% têm entre 25 e 54 anos.</p>
+        </div>
+        <div class="gender">
+          <div class="big">59%</div>
+          <div class="cap">dos seguidores são mulheres de 25 a 54 anos</div>
+          <div class="split">
+            <span style="width:78.5%;background:var(--wine)"></span>
+            <span style="width:9.2%;background:var(--gold)"></span>
+            <span style="width:12.3%;background:var(--sand)"></span>
+          </div>
+          <div class="legend">
+            <span><i class="dot" style="background:var(--wine)"></i>Mulheres 79%</span>
+            <span><i class="dot" style="background:var(--gold)"></i>Homens 9%</span>
+            <span><i class="dot" style="background:var(--sand)"></i>Não informado 12%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Conteúdo</div>
+      <h2>Sobre o que eu falo</h2>
+      <div class="topics">
+        <div class="topic"><h3>Automaquiagem</h3><p>Técnicas práticas e rápidas, explicadas pra quem quer fazer em casa.</p></div>
+        <div class="topic"><h3>Pele madura</h3><p>Produto, textura e acabamento pra pele real, sem filtro como referência.</p></div>
+        <div class="topic"><h3>Autocuidado</h3><p>Cabelo, skincare e rotina de beleza no meio de uma agenda cheia.</p></div>
+        <div class="topic"><h3>Rotina e negócios</h3><p>Os bastidores de uma mulher que toca vários negócios ao mesmo tempo.</p></div>
+        <div class="topic"><h3>Experiências</h3><p>Encontros presenciais do Handem Club: beleza, bem-estar e lifestyle.</p></div>
+        <div class="topic"><h3>Comércio local</h3><p>Lojas, serviços e novidades da Ilha do Governador e de São José dos Campos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Parcerias</div>
+      <h2>Marcas com quem já trabalhei</h2>
+
+      <div class="feature">
+        <div class="eyebrow">Destaque · Reels</div>
+        <h3>Loja Incrível Riachuelo · Ilha Plaza Shopping</h3>
+        <div class="fstats">
+          <div><div class="n">18.690</div><div class="l">visualizações</div></div>
+          <div><div class="n">11.653</div><div class="l">contas alcançadas</div></div>
+          <div><div class="n">878</div><div class="l">interações</div></div>
+          <div><div class="n">171</div><div class="l">compartilhamentos</div></div>
+        </div>
+        <a href="https://www.instagram.com/reel/Ddb6qh4xktx/">Ver o Reels →</a>
+      </div>
+
+      <div class="cases">
+        <a class="case" href="https://www.instagram.com/reel/DeVUqCExLdG/">
+          <div class="brand">L'Oréal Paris · Elseve</div>
+          <div class="what">Reels de produto em uso (#recebido)</div>
+          <div class="num">942<small>views</small></div>
+        </a>
+        <a class="case" href="https://www.instagram.com/reel/DcyC7ioxfQL/">
+          <div class="brand">KIKO Milano</div>
+          <div class="what">Reels de maquiagem com blush</div>
+          <div class="num">686<small>views</small></div>
+        </a>
+        <a class="case" href="https://www.instagram.com/reel/DcQoZX5xGHr/">
+          <div class="brand">Negócio local · salão</div>
+          <div class="what">Reels de indicação de serviço</div>
+          <div class="num">1.838<small>views</small></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Formatos</div>
+      <h2>Formatos e valores</h2>
+      <div class="pgrid">
+        <div class="pcard">
+          <h3>Influenciadora</h3>
+          <div class="sub">Publicado no @handemisabella</div>
+          <div class="row"><span>Post Reels</span><b>R$ 800</b></div>
+          <div class="row"><span>Reels em collab</span><b>R$ 900</b></div>
+          <div class="row"><span>1 story</span><b>R$ 150</b></div>
+          <div class="row"><span>Combo 3 stories</span><b>R$ 350</b></div>
+          <div class="row"><span>Combo 5 stories</span><b>R$ 500</b></div>
+          <div class="row"><span>Presença em evento + Reels</span><b>R$ 1.000</b></div>
+          <div class="row"><span>Diária de gravação</span><b>R$ 1.500</b></div>
+        </div>
+        <div class="pcard">
+          <h3>UGC Creator</h3>
+          <div class="sub">Conteúdo para a marca publicar e anunciar</div>
+          <div class="row"><span>1 vídeo</span><b>R$ 400</b></div>
+          <div class="row"><span>Pacote Bronze · 3 vídeos</span><b>R$ 1.050</b></div>
+          <div class="row"><span>Pacote Prata · 5 vídeos + 5 fotos</span><b>R$ 1.700</b></div>
+          <div class="row"><span>Pacote Ouro · 10 vídeos + 10 fotos</span><b>R$ 3.000</b></div>
+        </div>
+      </div>
+      <p class="note">Os valores incluem uso de imagem digital (redes sociais e site) por 6 meses no Brasil, com tráfego pago liberado. Prazos maiores, TV, mídia offline, uso internacional e exclusividade são orçados à parte. Também faço permutas, conforme a marca e o produto.</p>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="wrap box">
+      <div class="eyebrow">Contato</div>
+      <h2>Vamos criar juntas?</h2>
+      <p>Parcerias e publicidade com marcas e negócios de qualquer região.</p>
+      <div class="btns">
+        <a class="btn p" href="https://wa.me/5521992604945">WhatsApp de parcerias</a>
+        <a class="btn s" href="https://www.instagram.com/handemisabella/">Instagram</a>
+      </div>
+      <div class="plain">WhatsApp (21) 99260-4945 · @handemisabella</div>
+    </div>
+  </section>
+</main>
+<footer>Isabella Handem · Mídia Kit 2026</footer>
+</body>
+</html>
